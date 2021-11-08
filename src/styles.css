@@ -1,3 +1,12 @@
+#background {
+    background-image: url(/assets/background.svg);
+    background-size: 100% auto;
+    height: 100vh;
+    }
+
 body {
-    background-image: url(/assets/background-image);
+    margin: 0%;
+    color: white;
+    font-family: 'Nunito', sans-serif;
 }
+

@@ -1,0 +1,9 @@
+#background {
+    background-image: url(/assets/background.svg);
+    background-size: 100% auto;
+    height: 100vh;
+    }
+
+body {
+    margin: 0%;
+}
