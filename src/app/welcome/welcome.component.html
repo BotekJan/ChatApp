@@ -1,6 +1,14 @@
-<div class="col-sm-8" id="welcome">
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda eligendi incidunt ea, quasi pariatur quas excepturi illo cupiditate molestiae, enim ex. Similique in enim qui doloremque nesciunt sit voluptatibus magnam.</p>
+<div class="row"  id="welcome">
+  <div class="col-sm-8">
+    <p>
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda
+      eligendi incidunt ea, quasi pariatur quas excepturi illo cupiditate
+      molestiae, enim ex. Similique in enim qui doloremque nesciunt sit
+      voluptatibus magnam.
+    </p>
+  </div>
+  <div class="col-sm-4" id="form">
+    <login-form *ngIf="form === '/Login'"></login-form>
+    <register-form *ngIf="form === '/Register'"></register-form>
+  </div>
 </div>
-
-    
-

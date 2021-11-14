@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-register-form',
+  selector: 'register-form',
   templateUrl: './register-form.component.html',
   styleUrls: ['./register-form.component.css']
 })
