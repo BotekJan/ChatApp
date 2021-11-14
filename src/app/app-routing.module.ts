@@ -5,7 +5,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 
 const routes: Routes = [
   {path:"Login", component: WelcomeComponent},
-  {path:"", component: WelcomeComponent}
+  {path:'', redirectTo: 'Login', pathMatch: 'full'}
 ];
 
 @NgModule({
