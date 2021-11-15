@@ -1,0 +1,28 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BotekJan/ChatApp.git"
+  },
+  "keywords": [
+    "node",
+    "backend",
+    "restful",
+    "api"
+  ],
+  "author": "Michal Brožovič",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BotekJan/ChatApp/issues"
+  },
+  "homepage": "https://github.com/BotekJan/ChatApp#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
