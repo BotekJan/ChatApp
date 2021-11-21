@@ -13,4 +13,8 @@ export class RegisterFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  log(text: any){
+    console.log(text);
+  }
+
 }

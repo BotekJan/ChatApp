@@ -1,1 +1,34 @@
-<p>login-form works!</p>
+<h1>Login</h1>
+<form>
+    <div class="mb-3">
+      <label for="name" class="form-label">Jméno</label>
+      <input required ngModel minlength="3" maxlength="32" name="name" #name="ngModel" type="text"  class="form-control" id="name" >
+      <div class="alert alert-danger" *ngIf="name.dirty && !name.valid">
+        <div *ngIf="name.errors?.['required']">*Jméno je povinné</div>
+        <div *ngIf="name.errors?.['minlength']">*Jméno musí mít alespoň {{name.errors?.['minlength']?.['requiredLength']}}  znaky</div>
+        <div *ngIf="name.errors?.['maxlength']">*Jméno může mít nejvíce {{name.errors?.['maxlength']?.['requiredLength']}} znaků</div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Heslo</label>
+      <input required ngModel minlength="8" maxlength="32" name="password" #password="ngModel" type="password" class="form-control" id="password">
+      <div class="alert alert-danger" *ngIf="password.dirty && !password.valid">
+        <div *ngIf="password.errors?.['required']">*Heslo je povinné</div>
+        <div *ngIf="password.errors?.['minlength']">*Heslo musí mít alespoň {{password.errors?.['minlength']?.['requiredLength']}} znaků</div>
+        <div *ngIf="password.errors?.['maxlength']">*Heslo může mít nejvíce {{password.errors?.['maxlength']?.['requiredLength']}} znaků</div>
+      </div>
+    </div>
+    <div class="mb-3">
+        <label for="passwordRepeat" class="form-label">Heslo znovu</label>
+        <input required ngModel minlength="8" maxlength="32" name="passwordRepeat" #passwordRepeat="ngModel" type="password" class="form-control" id="passwordRepeat">
+        <div class="alert alert-danger" *ngIf="passwordRepeat.dirty && !passwordRepeat.valid">
+          <div *ngIf="passwordRepeat.errors?.['required']">*Heslo znovu je povinné</div>
+          <div *ngIf="!(password.viewModel === passwordRepeat.viewModel)">*Heslo znovu musí být stejné jako Heslo</div>
+        </div>
+    </div>
+    <div class="d-grid">
+        <button type="submit" class="btn btn-primary" type="button">Zaregistrovat se</button>
+    </div>
+  </form>
+
+  <a href="#">Už máte účet? Přihlašte se.</a>
