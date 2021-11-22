@@ -6,12 +6,25 @@ import { map, filter, catchError, mergeMap } from 'rxjs/operators';
 
 @Injectable()
 export class AuthService {
-  private _url = "https://abcabcchatapp.herokuapp.com/";
+  private _url = 'https://abcabcchatapp.herokuapp.com/';
 
   constructor(private http: HttpClient) {}
 
-  getComments(){
-		return this.http.get(this._url).pipe(map(data => {})).subscribe(result => {console.log(result);
-    });;
-	}
+  getComments() {
+    return this.http
+      .get(this._url)
+      .pipe(map((data) => {}))
+      .subscribe((result) => {
+        console.log(result);
+      });
+  }
+
+  usernameExists() {
+    return this.http
+      .get(this._url)
+      .pipe(map((data) => {}))
+      .subscribe((result) => {
+        console.log(result);
+      });
+  }
 }
