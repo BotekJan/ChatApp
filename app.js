@@ -1,10 +1,15 @@
 const express = require('express');
 const app = express();
 
+var cors = require('cors');
+
+
 const authRoutes = require('./api/routes/auth');
 const chatRoutes = require('./api/routes/chat');
 
 const mongoose = require('mongoose');
+
+app.use(cors());
 
 
 mongoose.connect('mongodb+srv://brozovic_michal:' 
@@ -14,9 +19,6 @@ mongoose.connect('mongodb+srv://brozovic_michal:'
     useMongoClient: true
 })
 
-<<<<<<< HEAD
-app.use('/chat', chatRoutes);
-=======
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header(
@@ -30,7 +32,6 @@ app.use((req, res, next) => {
     next();
   });
 
->>>>>>> fdd6397ac54c1bdb39e0df9514c1fef80f0bd8f6
 app.use('/auth', authRoutes);
 
 module.exports = app;
