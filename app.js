@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 
 const authRoutes = require('./api/routes/auth');
+const chatRoutes = require('./api/routes/chat');
 
 const mongoose = require('mongoose');
 
@@ -13,6 +14,7 @@ mongoose.connect('mongodb+srv://brozovic_michal:'
     useMongoClient: true
 })
 
+app.use('/chat', chatRoutes);
 app.use('/auth', authRoutes);
 
 module.exports = app;
