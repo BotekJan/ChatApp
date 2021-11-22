@@ -9,7 +9,7 @@ const chatRoutes = require('./api/routes/chat');
 
 const mongoose = require('mongoose');
 
-app.use(cors());
+
 
 
 mongoose.connect('mongodb+srv://brozovic_michal:' 
@@ -18,6 +18,10 @@ mongoose.connect('mongodb+srv://brozovic_michal:'
 {
     useMongoClient: true
 })
+
+app.use(cors());
+
+app.use('/auth', authRoutes);
 
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
@@ -32,6 +36,6 @@ app.use((req, res, next) => {
     next();
   });
 
-app.use('/auth', authRoutes);
+
 
 module.exports = app;
