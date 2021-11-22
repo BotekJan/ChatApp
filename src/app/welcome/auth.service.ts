@@ -6,7 +6,7 @@ import { map, filter, catchError, mergeMap } from 'rxjs/operators';
 
 @Injectable()
 export class AuthService {
-  private _url = 'https://abcabcchatapp.herokuapp.com/';
+  private _url = 'https://abcabcchatapp.herokuapp.com';
 
   constructor(private http: HttpClient) {}
 
@@ -19,9 +19,11 @@ export class AuthService {
       });
   }
 
-  usernameExists() {
+  usernameExists(name : String) {
     return this.http
-      .get(this._url)
+      .post(this._url + '/auth/usernameExists', {
+        jmeno: name
+      })
       .pipe(map((data) => {}))
       .subscribe((result) => {
         console.log(result);

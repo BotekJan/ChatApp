@@ -13,6 +13,8 @@ export class RegisterFormComponent implements OnInit {
   constructor(private auth : AuthService) {
     this.message = this.auth.getComments();
     console.log(this.message);
+    this.message = this.auth.usernameExists('Adolf');
+    console.log(this.message);
    }
 
   ngOnInit(): void {
