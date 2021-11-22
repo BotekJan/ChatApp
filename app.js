@@ -6,8 +6,6 @@ const authRoutes = require('./api/routes/auth');
 const mongoose = require('mongoose');
 
 
-
-
 mongoose.connect('mongodb+srv://brozovic_michal:' 
 + process.env.MONGO_ATLAS_PW + 
 '@chatapp.wqbas.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', 
