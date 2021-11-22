@@ -7,47 +7,77 @@ const mongoose = require("mongoose");
 const authRoutes = require("./api/routes/auth");
 const chatRoutes = require("./api/routes/chat");
 
-mongoose.connect(
-  "mongodb+srv://botek:" +
-    process.env.MONGO_ATLAS_PW +
-    "@node-rest-shop.k0mor.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
-);
-mongoose.Promise = global.Promise;
+var cors = require('cors');
 
-app.use(morgan("dev"));
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+
+const authRoutes = require('./api/routes/auth');
+const chatRoutes = require('./api/routes/chat');
+
+const mongoose = require('mongoose');
+
+app.use(cors());
+
+
+mongoose.connect('mongodb+srv://brozovic_michal:' 
++ process.env.MONGO_ATLAS_PW + 
+'@chatapp.wqbas.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', 
+{
+    useMongoClient: true
+})
 
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );
-  if (req.method === "OPTIONS") {
-    res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
-    return res.status(200).json({});
-  }
-  next();
-});
-
-app.use("/auth", authRoutes);
-app.use("/chat", chatRoutes);
-
-//Error handeling
-app.use((req, res, next) => {
-  const error = new Error("Not found");
-  error.status = 404;
-  next(error);
-});
-
-app.use((error, req, res, next) => {
-  res.status(error.status || 500);
-  res.json({
-    error: {
-      message: error.message,
-    },
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+    );
+    if (req.method === "OPTIONS") {
+      res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
+      return res.status(200).json({});
+    }
+    next();
   });
-});
 
-module.exports = app;
+  app.use(morgan("dev"));
+  app.use(bodyParser.urlencoded({ extended: false }));
+  app.use(bodyParser.json());
+  
+  app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+    );
+    if (req.method === "OPTIONS") {
+      res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
+      return res.status(200).json({});
+    }
+    next();
+  });
+  
+  app.use("/auth", authRoutes);
+  app.use("/chat", chatRoutes);
+  
+  //Error handeling
+  app.use((req, res, next) => {
+    const error = new Error("Not found");
+    error.status = 404;
+    next(error);
+  });
+  
+  app.use((error, req, res, next) => {
+    res.status(error.status || 500);
+    res.json({
+      error: {
+        message: error.message,
+      },
+    });
+  });
+  
+  module.exports = app;
+
+
+
+
+
+
