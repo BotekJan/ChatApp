@@ -38,7 +38,8 @@ app.use("/chats", chatRoutes);
 
 app.get("/", (req, res, next) => {
   res.status(200).json({
-      message: "This is an api for a chat app project https://github.com/BotekJan/ChatApp",
+      message: "This is an api for a chat app project",
+      github: "https://github.com/BotekJan/ChatApp"
   });
 });
 
