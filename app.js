@@ -4,14 +4,11 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
-const authRoutes = require("./api/routes/auth");
-const chatRoutes = require("./api/routes/chat");
-
 mongoose.connect(
-  'mongodb+srv://brozovic_michal:' 
-  + process.env.MONGO_ATLAS_PW + 
+  'mongodb+srv://botek:' 
+  + 'janbotek' + 
   '@chatapp.wqbas.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
-);
+).catch(err => console.log(err));
 mongoose.Promise = global.Promise;
 
 app.use(morgan("dev"));
@@ -31,8 +28,10 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/auths", authRoutes);
-app.use("/chats", chatRoutes);
+
+app.use("/auth", require("./api/routes/auth"));
+app.use("/chat", require("./api/routes/chat"));
+
 
 //default route
 
@@ -42,6 +41,8 @@ app.get("/", (req, res, next) => {
       github: "https://github.com/BotekJan/ChatApp"
   });
 });
+
+
 
 //Error handeling
 app.use((req, res, next) => {
