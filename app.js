@@ -4,8 +4,8 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
-const authRoutes = require("./api/routes/auths");
-const chatRoutes = require("./api/routes/chats");
+const authRoutes = require("./api/routes/auth");
+const chatRoutes = require("./api/routes/chat");
 
 mongoose.connect(
   'mongodb+srv://brozovic_michal:' 
