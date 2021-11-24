@@ -34,6 +34,14 @@ app.use((req, res, next) => {
 app.use("/auths", authRoutes);
 app.use("/chats", chatRoutes);
 
+//default route
+
+app.get("/", (req, res, next) => {
+  res.status(200).json({
+      message: "This is an api for a chat app project https://github.com/BotekJan/ChatApp",
+  });
+});
+
 //Error handeling
 app.use((req, res, next) => {
   const error = new Error("Not found");
