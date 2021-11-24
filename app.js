@@ -4,20 +4,17 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 
-const authRoutes = require("./api/routes/auth");
-const chatRoutes = require("./api/routes/chat");
-
+const authRoutes = require("./api/routes/auths");
+const chatRoutes = require("./api/routes/chats");
 
 mongoose.connect(
   'mongodb+srv://brozovic_michal:' 
-+ process.env.MONGO_ATLAS_PW + 
-'@chatapp.wqbas.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+  + process.env.MONGO_ATLAS_PW + 
+  '@chatapp.wqbas.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 );
 mongoose.Promise = global.Promise;
 
-app.use(cors());
-
-pp.use(morgan("dev"));
+app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -34,8 +31,8 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/auth", authRoutes);
-app.use("/chat", chatRoutes);
+app.use("/auths", authRoutes);
+app.use("/chats", chatRoutes);
 
 //Error handeling
 app.use((req, res, next) => {
