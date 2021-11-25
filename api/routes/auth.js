@@ -9,11 +9,13 @@ router.post("/usernameExists", (req, res, next) => {
         .then((jmeno) => {
             if (jmeno) {
                 return res.status(200).json({
-                    message: "User exists"
+                    message: "User exists",
+                    userExists: true
                 })
             }
             return res.status(404).json({
                 message: "User does not exist",
+                userExists: false
             });
 
         })
