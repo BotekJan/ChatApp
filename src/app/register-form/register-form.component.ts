@@ -17,4 +17,8 @@ export class RegisterFormComponent implements OnInit {
     console.log(text);
   }
 
+  onSubmit(){
+
+  }
+
 }

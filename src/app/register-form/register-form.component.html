@@ -1,5 +1,5 @@
 <h1>Registrace</h1>
-<form>
+<form (ngSubmit)="onSubmit()" #registerForm="ngForm">
     <div class="mb-3">
       <label for="name" class="form-label">Jméno</label>
       <input required ngModel minlength="3" maxlength="32" name="name" #name="ngModel" type="text"  class="form-control" id="name" >
@@ -27,7 +27,7 @@
         </div>
     </div>
     <div class="d-grid">
-        <button type="submit" class="btn btn-primary" type="button">Zaregistrovat se</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!registerForm.form.valid" >Zaregistrovat se</button>
     </div>
   </form>
 
