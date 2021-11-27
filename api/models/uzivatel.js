@@ -5,7 +5,8 @@ const uzivatelSchema = mongoose.Schema({
     jmeno: String,
     pratele: [],
     obrazek: String,
-    nastaveni : {}
+    nastaveni : {},
+    password: { type: String, required: true}
 })
 
 module.exports = mongoose.model('Uzivatel', uzivatelSchema)

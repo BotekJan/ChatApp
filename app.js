@@ -3,6 +3,9 @@ const app = express();
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const uzivatelRoutes = require('./api/routes/uzivatel');
+
+
 
 mongoose.connect(
   'mongodb+srv://botek:' 
@@ -31,6 +34,7 @@ app.use((req, res, next) => {
 
 app.use("/auth", require("./api/routes/auth"));
 app.use("/chat", require("./api/routes/chat"));
+app.use("/uzivatel", uzivatelRoutes);
 
 
 //default route
