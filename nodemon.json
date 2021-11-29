@@ -1,6 +1,7 @@
 {
     "env": {
-        "MANGO_ATLAS_PW": "janbotek"
+        "MANGO_ATLAS_PW": "janbotek",
+        "JWT_KEY": "secret"
     }
 }
 
