@@ -29,4 +29,5 @@ export class AuthService {
         console.log(result);
       });
   }
+  }
 }
