@@ -1,3 +1,6 @@
+import { MustMatchDirective } from './directives/matchingFields.directive';
+import { usernameExistsValidatorDirective } from './directives/username-exists.directive';
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
@@ -17,7 +20,9 @@ import { AuthService } from './welcome/auth.service';
     AppComponent,
     WelcomeComponent,
     LoginFormComponent,
-    RegisterFormComponent
+    RegisterFormComponent,
+    usernameExistsValidatorDirective,
+    MustMatchDirective
   ],
   imports: [
     BrowserModule,

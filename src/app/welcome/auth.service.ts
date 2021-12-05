@@ -2,7 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
-import { map, filter, catchError, mergeMap } from 'rxjs/operators';
+import { map, filter, catchError, mergeMap, pluck } from 'rxjs/operators';
+import { Observable } from 'rxjs/Rx';
+
+interface usernameExists{
+  message: string,
+  usernameExists: boolean
+}
 
 @Injectable()
 export class AuthService {
@@ -11,23 +17,12 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   getComments() {
-    return this.http
-      .get(this._url)
-      .pipe(map((data) => {}))
-      .subscribe((result) => {
-        console.log(result);
-      });
+    return this.http.get(this._url);
+      
   }
 
-  usernameExists(name : String) {
-    return this.http
-      .post(this._url + '/auth/usernameExists', {
-        jmeno: name
-      })
-      .pipe(map((data) => {}))
-      .subscribe((result) => {
-        console.log(result);
-      });
+  usernameExists(name : String): Observable<Object> {
+    return this.http.post(this._url + '/auth/usernameExists', {jmeno: name}).pipe(pluck('usernameExists'))
   }
 }
 

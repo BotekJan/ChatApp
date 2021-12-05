@@ -1,9 +1,15 @@
-// import { map } from 'rxjs/operators';
-// import { AbstractControl, AsyncValidatorFn } from "@angular/forms";
-// import { AuthService } from "../welcome/auth.service";
+import { AuthService } from './../welcome/auth.service';
+import { ValidatorFn, AbstractControl, ValidationErrors, AsyncValidatorFn } from "@angular/forms";
+import { Observable } from "rxjs";
+import { map } from 'rxjs/operators';
 
-// export function couseTitleValidator(auth: AuthService):AsyncValidatorFn {
-//     return (control: AbstractControl) => {
-//         return auth.usernameExists(control.value).usernameExists
-//     }
-// }
+export function usernameExistsValidator(auth: AuthService): AsyncValidatorFn {
+    return (control: AbstractControl) => {
+      return auth.usernameExists(control.value).pipe(map(res => {
+        
+        return res ? {usernameExists: true} : null;
+      }))
+
+      
+    };
+  }
