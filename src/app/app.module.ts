@@ -12,6 +12,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { AuthService } from './welcome/auth.service';
+import { forbiddenNameValidator } from './validators/forbiddenName.validator';
+import { ForbiddenValidatorDirective } from './directives/forbiddenName.directive';
 
 
 
@@ -22,7 +24,8 @@ import { AuthService } from './welcome/auth.service';
     LoginFormComponent,
     RegisterFormComponent,
     usernameExistsValidatorDirective,
-    MustMatchDirective
+    MustMatchDirective,
+    ForbiddenValidatorDirective
   ],
   imports: [
     BrowserModule,

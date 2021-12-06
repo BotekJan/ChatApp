@@ -12,7 +12,7 @@
     </div>
     <div class="mb-3">
       <label for="password" class="form-label">Heslo</label>
-      <input [mustMatch]="['passwordRepeat']" (change)="log(password)" required ngModel minlength="8" maxlength="32" name="password" #password="ngModel" type="password" class="form-control" id="password">
+      <input appForbiddenName="bobobobob" required ngModel minlength="8" maxlength="32" name="password" #password="ngModel" type="password" class="form-control" id="password">
       <div class="alert alert-danger" *ngIf="password.dirty && !password.valid">
         <div *ngIf="password.errors?.['required']">*Heslo je povinné</div>
         <div *ngIf="password.errors?.['minlength']">*Heslo musí mít alespoň {{password.errors?.['minlength']?.['requiredLength']}} znaků</div>
@@ -21,10 +21,11 @@
     </div>
     <div class="mb-3">
         <label for="passwordRepeat" class="form-label">Heslo znovu</label>
-        <input [mustMatch]="['password']" (change)="log(passwordRepeat)" required ngModel minlength="8" maxlength="32" name="passwordRepeat" #passwordRepeat="ngModel" type="password" class="form-control" id="passwordRepeat">
+        <input mustMatch="password" required ngModel minlength="8" maxlength="32" name="passwordRepeat" #passwordRepeat="ngModel" type="password" class="form-control" id="passwordRepeat">
         <div class="alert alert-danger" *ngIf="passwordRepeat.dirty && !passwordRepeat.valid">
           <div *ngIf="passwordRepeat.errors?.['required']">*Heslo znovu je povinné</div>
-          <div *ngIf="passwordRepeat.errors?.['matching']">Password must match.</div>
+          <div *ngIf="passwordRepeat.errors?.['notMatching']">*Hesla se musí shodovat</div>
+          
         </div>
     </div>
     <div class="d-grid">
@@ -32,4 +33,4 @@
     </div>
   </form>
 
-  <a href="#">Už máte účet? Přihlašte se.</a>
+  <a routerLink="../Login">Už máte účet? Přihlašte se.</a>

@@ -1,5 +1,5 @@
 import { Directive, Input } from '@angular/core';
-import { NG_VALIDATORS, Validator, ValidationErrors, FormGroup } from '@angular/forms';
+import { NG_VALIDATORS, Validator, ValidationErrors, FormGroup, ValidatorFn, AbstractControl } from '@angular/forms';
 
 import { matchValidator } from '../validators/matchingFields.validator';
 
@@ -8,9 +8,10 @@ import { matchValidator } from '../validators/matchingFields.validator';
     providers: [{ provide: NG_VALIDATORS, useExisting: MustMatchDirective, multi: true }]
 })
 export class MustMatchDirective implements Validator {
-    @Input('mustMatch') mustMatch: string[] = [];
+    @Input() mustMatch = '';
 
-    validate() {
-        return matchValidator(this.mustMatch[0], false);
+
+    validate(control: AbstractControl): ValidationErrors | null {
+        return this.mustMatch ? matchValidator(this.mustMatch)(control) : null
     }
 }

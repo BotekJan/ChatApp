@@ -8,7 +8,6 @@ import { AuthService } from '../welcome/auth.service';
 export class RegisterFormComponent implements OnInit {
 
   constructor(private auth : AuthService) {
-    auth.usernameExists('Adolf').subscribe(res => console.log(res));
   }
 
   ngOnInit(): void {
