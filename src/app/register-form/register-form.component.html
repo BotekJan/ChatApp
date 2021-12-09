@@ -1,5 +1,5 @@
 <h1>Registrace</h1>
-<form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+<form (ngSubmit)="onSubmit(registerForm)" #registerForm="ngForm">
     <div class="mb-3">
       <label for="name" class="form-label">Jméno</label>
       <input (change)="log(name)" required usernameExistsValidator ngModel minlength="3" maxlength="32" name="name" #name="ngModel" type="text"  class="form-control" id="name">

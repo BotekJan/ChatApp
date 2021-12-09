@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 import { map, filter, catchError, mergeMap, pluck } from 'rxjs/operators';
 import { Observable } from 'rxjs/Rx';
+import { NgForm } from '@angular/forms';
 
 interface usernameExists{
   message: string,
@@ -16,13 +17,19 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  getComments() {
+  getDefault() {
     return this.http.get(this._url);
       
   }
 
   usernameExists(name : String): Observable<Object> {
     return this.http.post(this._url + '/auth/usernameExists', {jmeno: name}).pipe(pluck('usernameExists'))
+  }
+
+  register(form: NgForm){
+    let name = form.controls.name?.value;
+    let password = form.controls.password?.value;
+    return this.http.post(this._url + '/auth/register', {jmeno: name, password: password})
   }
 }
 
