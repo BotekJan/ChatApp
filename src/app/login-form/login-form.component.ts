@@ -12,4 +12,7 @@ export class LoginFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  log(x: any){
+    console.log(x)
+  }
 }

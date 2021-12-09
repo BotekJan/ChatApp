@@ -2,9 +2,10 @@
 <form>
     <div class="mb-3">
       <label for="name" class="form-label">Jméno</label>
-      <input required ngModel name="name" #name="ngModel" type="text"  class="form-control" id="name" >
+      <input (change)="log(name)" usernameExistsValidator required ngModel name="name" #name="ngModel" type="text"  class="form-control" id="name" >
       <div class="alert alert-danger" *ngIf="name.dirty && !name.valid">
         <div *ngIf="name.errors?.['required']">*Jméno je povinné</div>
+        <div *ngIf="!name.errors?.['usernameExists']">*Uživatel s tímto jménem neexistuje.</div>
       </div>
     </div>
     <div class="mb-3">
