@@ -54,7 +54,7 @@ router.post("/usernameExists", (req, res, next) => {
     });
 
     router.post('/register', (req, res, next) => {
-        User.find({jmeno: req.body.jmeno})
+        Uzivatel.find({jmeno: req.body.jmeno})
         .exec()
         .then(user => {
             if (user.length>= 1)  {
