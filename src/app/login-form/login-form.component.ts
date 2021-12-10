@@ -13,6 +13,6 @@ export class LoginFormComponent implements OnInit {
   }
 
   log(x: any){
-    console.log(x)
+    console.log("abc")
   }
 }

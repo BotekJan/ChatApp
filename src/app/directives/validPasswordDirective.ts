@@ -11,8 +11,8 @@ import { NG_ASYNC_VALIDATORS, AsyncValidator, AsyncValidatorFn, FormControl } fr
 export class passwordValidationDirective implements AsyncValidator {
   validator: AsyncValidatorFn;
     
-    constructor(private auth: AuthService) {
-      this.validator = usernameExistsValidator(auth);
+    constructor(private authh: AuthService) {
+      this.validator = usernameExistsValidator(authh);
     }
     
     validate(c: FormControl) {
