@@ -1,4 +1,6 @@
+import { FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../welcome/auth.service';
 
 @Component({
   selector: 'login-form',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth : AuthService) { }
 
   ngOnInit(): void {
   }
 
+  onSubmit(form: FormGroup){
+    this.auth.loginUser(form).subscribe(res => console.log(res))
+  }
 }

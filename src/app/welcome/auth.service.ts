@@ -1,3 +1,4 @@
+import { FormGroup } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
@@ -23,6 +24,10 @@ export class AuthService {
 
   usernameExists(name : String): Observable<Object> {
     return this.http.post(this._url + '/auth/usernameExists', {jmeno: name}).pipe(pluck('usernameExists'))
+  }
+
+  loginUser(form: FormGroup): Observable<Object>{
+    return this.http.post(this._url + "/auth/login", form);
   }
 }
 
