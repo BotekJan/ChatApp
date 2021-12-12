@@ -47,11 +47,7 @@ router.post("/usernameExists", (req, res, next) => {
 //     });
 // })
 
-    router.post("/login", (req, res, next) => {
-        res.status(200).json({
-            message: "Hadling GET requests to /products",
-        });
-    });
+    
 
     router.post('/register', (req, res, next) => {
         Uzivatel.find({jmeno: req.body.jmeno})
