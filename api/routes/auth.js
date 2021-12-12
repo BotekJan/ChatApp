@@ -71,9 +71,10 @@ router.post("/login", (req, res, next) => {
   user.find({ jmeno: req.body.jmeno })
     .exec()
     .then((user) => {
-      if (user.length >= 1) {
+      if (!user) {
         return res.status(401).json({
           message: "Jméno nenalezeno",
+          length: user.length
         });
       }
       bcrypt.compare(req.body.password, user[0].password, (err, result) => {
