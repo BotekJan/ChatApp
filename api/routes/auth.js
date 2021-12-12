@@ -4,20 +4,20 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-const uzivatel = require("../models/uzivatel");
+const user = require("../models/user");
 
-router.post("/uzivatelnameExists", (req, res, next) => {
-  uzivatel.findOne({ jmeno: req.body.jmeno })
+router.post("/usernameExists", (req, res, next) => {
+  user.findOne({ jmeno: req.body.jmeno })
     .then((jmeno) => {
       if (jmeno) {
         return res.status(200).json({
-          message: "uzivatel exists",
-          uzivatelnameExists: true,
+          message: "user exists",
+          usernameExists: true,
         });
       }
       return res.status(200).json({
-        message: "uzivatel does not exist",
-        uzivatelnameExists: false,
+        message: "user does not exist",
+        usernameExists: false,
       });
     })
     .catch((err) => {
@@ -27,10 +27,10 @@ router.post("/uzivatelnameExists", (req, res, next) => {
 });
 
 router.post("/register", (req, res, next) => {
-  uzivatel.find({ jmeno: req.body.jmeno })
+  user.find({ jmeno: req.body.jmeno })
     .exec()
-    .then((uzivatel) => {
-      if (uzivatel.length >= 1) {
+    .then((user) => {
+      if (user.length >= 1) {
         return res.status(409).json({
           message: "Jmeno existuje",
         });
@@ -41,13 +41,13 @@ router.post("/register", (req, res, next) => {
               error: err,
             });
           } else {
-            const uzivatel = new uzivatel({
+            const user = new user({
               _id: new mongoose.Types.ObjectId(),
               jmeno: req.body.jmeno,
               nastaveni: req.body.nastaveni,
               password: hash,
             });
-            uzivatel
+            user
               .save()
               .then((result) => {
                 console.log(result);
@@ -68,15 +68,15 @@ router.post("/register", (req, res, next) => {
 });
 
 router.post("/login", (req, res, next) => {
-  uzivatel.find({ jmeno: req.body.jmeno })
+  user.find({ jmeno: req.body.jmeno })
     .exec()
-    .then((uzivatel) => {
-      if (uzivatel.length >= 1) {
+    .then((user) => {
+      if (user.length >= 1) {
         return res.status(401).json({
           message: "Jméno nenalezeno",
         });
       }
-      bcrypt.compare(req.body.password, uzivatel[0].password, (err, result) => {
+      bcrypt.compare(req.body.password, user[0].password, (err, result) => {
         if (err) {
           return res.status(401).json({
             message: "Špatné jméno nebo heslo",
@@ -85,8 +85,8 @@ router.post("/login", (req, res, next) => {
         if (result) {
           const token = jwt.sign(
             {
-              jmeno: uzivatel[0].jmeno,
-              uzivatelId: uzivatel[0]._id,
+              jmeno: user[0].jmeno,
+              userId: user[0]._id,
             },
             process.env.JWT_KEY,
             {
@@ -111,8 +111,8 @@ router.post("/login", (req, res, next) => {
     });
 });
 
-router.delete("/uzivatelId", (req, res, next) => {
-  uzivatel.remove({ _id: req.params.uzivatelId })
+router.delete("/userId", (req, res, next) => {
+  user.remove({ _id: req.params.userId })
     .exec()
     .then((result) => {
       res.status(200).json({
