@@ -1,6 +1,7 @@
 import { FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../welcome/auth.service';
+import { map, pluck } from 'rxjs/operators';
 
 @Component({
   selector: 'login-form',
@@ -15,6 +16,10 @@ export class LoginFormComponent implements OnInit {
   }
 
   onSubmit(form: FormGroup){
-    this.auth.loginUser(form).subscribe(res => console.log(res))
+    this.auth.loginUser(form).subscribe(res => this.logIn(res))
+  }
+
+  logIn(token: string){
+    localStorage.setItem('token', token);
   }
 }

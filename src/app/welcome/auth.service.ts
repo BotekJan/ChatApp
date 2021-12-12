@@ -26,8 +26,8 @@ export class AuthService {
     return this.http.post(this._url + '/auth/usernameExists', {jmeno: name}).pipe(pluck('usernameExists'))
   }
 
-  loginUser(form: FormGroup): Observable<Object>{
-    return this.http.post(this._url + "/auth/login", form);
+  loginUser(form: FormGroup): Observable<string>{
+    return this.http.post(this._url + "/auth/login", form).pipe(pluck('token'));
   }
 }
 
