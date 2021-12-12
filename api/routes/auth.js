@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 const uzivatel = require("../models/uzivatel");
 
 router.post("/uzivatelnameExists", (req, res, next) => {
-  Uzivatel.findOne({ jmeno: req.body.jmeno })
+  uzivatel.findOne({ jmeno: req.body.jmeno })
     .then((jmeno) => {
       if (jmeno) {
         return res.status(200).json({
@@ -27,7 +27,7 @@ router.post("/uzivatelnameExists", (req, res, next) => {
 });
 
 router.post("/register", (req, res, next) => {
-  Uzivatel.find({ jmeno: req.body.jmeno })
+  uzivatel.find({ jmeno: req.body.jmeno })
     .exec()
     .then((uzivatel) => {
       if (uzivatel.length >= 1) {
@@ -41,7 +41,7 @@ router.post("/register", (req, res, next) => {
               error: err,
             });
           } else {
-            const uzivatel = new Uzivatel({
+            const uzivatel = new uzivatel({
               _id: new mongoose.Types.ObjectId(),
               jmeno: req.body.jmeno,
               nastaveni: req.body.nastaveni,
