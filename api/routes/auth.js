@@ -71,7 +71,7 @@ router.post("/login", (req, res, next) => {
   uzivatel.find({ jmeno: req.body.jmeno })
     .exec()
     .then((uzivatel) => {
-      if (uzivatel.length < 1) {
+      if (uzivatel.length >= 1) {
         return res.status(401).json({
           message: "Jméno nenalezeno",
         });
