@@ -6,18 +6,18 @@ const jwt = require("jsonwebtoken");
 
 const Uzivatel = require("../models/uzivatel");
 
-router.post("/usernameExists", (req, res, next) => {
+router.post("/uzivatelnameExists", (req, res, next) => {
   Uzivatel.findOne({ jmeno: req.body.jmeno })
     .then((jmeno) => {
       if (jmeno) {
         return res.status(200).json({
-          message: "User exists",
-          usernameExists: true,
+          message: "uzivatel exists",
+          uzivatelnameExists: true,
         });
       }
       return res.status(200).json({
-        message: "User does not exist",
-        usernameExists: false,
+        message: "uzivatel does not exist",
+        uzivatelnameExists: false,
       });
     })
     .catch((err) => {
@@ -29,8 +29,8 @@ router.post("/usernameExists", (req, res, next) => {
 router.post("/register", (req, res, next) => {
   Uzivatel.find({ jmeno: req.body.jmeno })
     .exec()
-    .then((user) => {
-      if (user.length >= 1) {
+    .then((uzivatel) => {
+      if (uzivatel.length >= 1) {
         return res.status(409).json({
           message: "Jmeno existuje",
         });
@@ -41,13 +41,13 @@ router.post("/register", (req, res, next) => {
               error: err,
             });
           } else {
-            const user = new Uzivatel({
+            const uzivatel = new Uzivatel({
               _id: new mongoose.Types.ObjectId(),
               jmeno: req.body.jmeno,
               nastaveni: req.body.nastaveni,
               password: hash,
             });
-            user
+            uzivatel
               .save()
               .then((result) => {
                 console.log(result);
@@ -68,15 +68,15 @@ router.post("/register", (req, res, next) => {
 });
 
 router.post("/login", (req, res, next) => {
-  User.find({ jmeno: req.body.jmeno })
+  uzivatel.find({ jmeno: req.body.jmeno })
     .exec()
-    .then((user) => {
-      if (user.length < 1) {
+    .then((uzivatel) => {
+      if (uzivatel.length < 1) {
         return res.status(401).json({
           message: "Jméno nenalezeno",
         });
       }
-      bcrypt.compare(req.body.password, user[0].password, (err, result) => {
+      bcrypt.compare(req.body.password, uzivatel[0].password, (err, result) => {
         if (err) {
           return res.status(401).json({
             message: "Jméno nenalezeno",
@@ -85,8 +85,8 @@ router.post("/login", (req, res, next) => {
         if (result) {
           const token = jwt.sign(
             {
-              jmeno: user[0].jmeno,
-              userId: user[0]._id,
+              jmeno: uzivatel[0].jmeno,
+              uzivatelId: uzivatel[0]._id,
             },
             process.env.JWT_KEY,
             {
@@ -111,8 +111,8 @@ router.post("/login", (req, res, next) => {
     });
 });
 
-router.delete("/userId", (req, res, next) => {
-  User.remove({ _id: req.params.userId })
+router.delete("/uzivatelId", (req, res, next) => {
+  uzivatel.remove({ _id: req.params.uzivatelId })
     .exec()
     .then((result) => {
       res.status(200).json({
