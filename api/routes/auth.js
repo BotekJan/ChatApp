@@ -79,7 +79,7 @@ router.post("/login", (req, res, next) => {
       bcrypt.compare(req.body.password, uzivatel[0].password, (err, result) => {
         if (err) {
           return res.status(401).json({
-            message: "Jméno nenalezeno",
+            message: "Špatné jméno nebo heslo",
           });
         }
         if (result) {
@@ -99,7 +99,7 @@ router.post("/login", (req, res, next) => {
           });
         }
         return res.status(401).json({
-          message: "Jméno nenalezeno",
+          message: "Přihlášení selhalo",
         });
       });
     })
