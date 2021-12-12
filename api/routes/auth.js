@@ -101,6 +101,7 @@ router.post("/login", (req, res, next) => {
         }
         return res.status(401).json({
           message: "Přihlášení selhalo",
+          result: res
         });
       });
     })
