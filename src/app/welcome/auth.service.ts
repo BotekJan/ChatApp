@@ -1,3 +1,4 @@
+import { FormGroup } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
@@ -6,9 +7,9 @@ import { map, filter, catchError, mergeMap, pluck } from 'rxjs/operators';
 import { Observable } from 'rxjs/Rx';
 import { NgForm } from '@angular/forms';
 
-interface usernameExists{
-  message: string,
-  usernameExists: boolean
+interface usernameExists {
+  message: string;
+  usernameExists: boolean;
 }
 
 @Injectable()
@@ -19,17 +20,23 @@ export class AuthService {
 
   getDefault() {
     return this.http.get(this._url);
-      
   }
 
-  usernameExists(name : String): Observable<Object> {
-    return this.http.post(this._url + '/auth/usernameExists', {jmeno: name}).pipe(pluck('usernameExists'))
+  usernameExists(name: String): Observable<Object> {
+    return this.http
+      .post(this._url + '/auth/usernameExists', { jmeno: name })
+      .pipe(pluck('usernameExists'));
   }
 
-  register(form: NgForm){
+  register(form: NgForm) {
     let name = form.controls.name?.value;
     let password = form.controls.password?.value;
-    return this.http.post(this._url + '/auth/register', {jmeno: name, password: password})
+    return this.http.post(this._url + '/auth/register', {
+      jmeno: name,
+      password: password,
+    });
+  }
+  loginUser(form: FormGroup): Observable<string> {
+    return this.http.post(this._url + '/auth/login', form).pipe(pluck('token'));
   }
 }
-
