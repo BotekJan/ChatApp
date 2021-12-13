@@ -17,6 +17,7 @@ export class LoginFormComponent implements OnInit {
 
   onSubmit(form: NgForm){
     this.auth.loginUser(form).subscribe(res => this.logIn(res))
+    form.resetForm();
   }
 
   logIn(token: string){
