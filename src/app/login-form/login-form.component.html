@@ -1,5 +1,5 @@
 <h1>Login</h1>
-<form (ngSubmit)="onSubmit(loginForm.value)" #loginForm="ngForm">
+<form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
     <div class="mb-3">
       <label for="name" class="form-label">Jméno</label>
       <input required ngModel name="name" #name="ngModel" type="text"  class="form-control" id="name" >

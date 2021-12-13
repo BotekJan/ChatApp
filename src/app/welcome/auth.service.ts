@@ -36,7 +36,12 @@ export class AuthService {
       password: password,
     });
   }
-  loginUser(form: FormGroup): Observable<string> {
-    return this.http.post(this._url + '/auth/login', form).pipe(pluck('token'));
+  loginUser(form: NgForm): Observable<string> {
+    let name = form.controls.name?.value;
+    let password = form.controls.password?.value;
+    return this.http.post(this._url + '/auth/login', {
+      jmeno: name,
+      password: password,
+    }).pipe(pluck('token'));
   }
 }

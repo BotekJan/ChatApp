@@ -1,11 +1,21 @@
-<div class="row"  id="welcome">
-  <div class="col-lg-8">
-    <p>
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Assumenda
-      eligendi incidunt ea, quasi pariatur quas excepturi illo cupiditate
-      molestiae, enim ex. Similique in enim qui doloremque nesciunt sit
-      voluptatibus magnam.
-    </p>
+<div class="row" id="welcome">
+  <div class="col-lg-8" style="position: relative;">
+    <div style="margin-left: auto; margin-right: auto; width: 40%; position: relative; right:0; left: 0">
+      <embed src="../../assets/Logo.svg" />
+    </div>
+    <div style="position: absolute; bottom: 0;">
+      <p>
+        Tento projekt je součástí předmětu praktický projekt na Obchodní akademii
+        Uherské Hradiště rok 2021.
+      </p>
+      <p>Autoři: Jan Botek, Michal Brožovič</p>
+      <p>
+        Github:
+        <a href="https://github.com/BotekJan/ChatApp" target="_blank" style="color:#8ddad3"
+          >https://github.com/BotekJan/ChatApp</a
+        >
+      </p>
+    </div>
   </div>
   <div class="col-lg-4" id="form">
     <login-form *ngIf="form === '/Login'"></login-form>

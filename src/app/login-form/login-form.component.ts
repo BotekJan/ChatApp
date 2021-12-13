@@ -1,4 +1,4 @@
-import { FormGroup } from '@angular/forms';
+import { FormGroup, NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../welcome/auth.service';
 import { map, pluck } from 'rxjs/operators';
@@ -15,7 +15,7 @@ export class LoginFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit(form: FormGroup){
+  onSubmit(form: NgForm){
     this.auth.loginUser(form).subscribe(res => this.logIn(res))
   }
 
