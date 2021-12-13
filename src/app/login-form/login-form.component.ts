@@ -21,5 +21,6 @@ export class LoginFormComponent implements OnInit {
 
   logIn(token: string){
     localStorage.setItem('token', token);
+    console.log("prihlaseni")
   }
 }
