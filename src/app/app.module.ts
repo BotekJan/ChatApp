@@ -14,6 +14,8 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 import { AuthService } from './welcome/auth.service';
 import { forbiddenNameValidator } from './validators/forbiddenName.validator';
 import { ForbiddenValidatorDirective } from './directives/forbiddenName.directive';
+import { AuthGuard } from './auth.guard';
+import { HomeComponent } from './home/home.component';
 
 
 
@@ -25,7 +27,8 @@ import { ForbiddenValidatorDirective } from './directives/forbiddenName.directiv
     RegisterFormComponent,
     usernameExistsValidatorDirective,
     MustMatchDirective,
-    ForbiddenValidatorDirective
+    ForbiddenValidatorDirective,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,7 @@ import { ForbiddenValidatorDirective } from './directives/forbiddenName.directiv
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

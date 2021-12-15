@@ -44,4 +44,8 @@ export class AuthService {
       password: password,
     }).pipe(pluck('token'));
   }
+
+  loggedIn(){
+    return !!localStorage.getItem('token')
+  }
 }
