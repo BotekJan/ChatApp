@@ -1,4 +1,4 @@
-import { AuthService } from './../welcome/auth.service';
+import { AuthService } from '../auth.service';
 import { ValidatorFn, AbstractControl, ValidationErrors, AsyncValidatorFn } from "@angular/forms";
 import { Observable } from "rxjs";
 import { map } from 'rxjs/operators';

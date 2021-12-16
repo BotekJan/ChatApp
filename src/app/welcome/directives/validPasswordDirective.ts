@@ -1,6 +1,6 @@
-import { usernameExistsValidator } from './../validators/username-exists.validator';
+import { usernameExistsValidator } from '../validators/username-exists.validator';
 import { Directive } from '@angular/core';
-import { AuthService } from '../welcome/auth.service';
+import { AuthService } from '../auth.service';
 import { NG_ASYNC_VALIDATORS, AsyncValidator, AsyncValidatorFn, FormControl } from '@angular/forms';
 
 @Directive({
