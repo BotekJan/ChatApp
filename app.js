@@ -33,7 +33,7 @@ app.use((req, res, next) => {
 
 app.use("/auth", require("./api/routes/auth"));
 app.use("/chat", require("./api/routes/chat"));
-app.use("/user", require("./api/routes/user"));
+
 
 
 
