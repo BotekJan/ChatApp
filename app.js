@@ -30,7 +30,7 @@ app.use((req, res, next) => {
   next();
 });
 
-
+app.use("/user", require("./api/routes/user"));
 app.use("/auth", require("./api/routes/auth"));
 app.use("/chat", require("./api/routes/chat"));
 
