@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 
 const checkAuth = require("../middleware/check-auth")
 
-router.post("/", checkAuth,(req, res, next) => {
+router.post("/", checkAuth (req, res, next) => {
     Uzivatel.findOne({ jmeno: req.body.jmeno })
       .then((user) => {
         if (user) {
