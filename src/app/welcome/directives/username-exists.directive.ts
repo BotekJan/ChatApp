@@ -1,6 +1,6 @@
-import { passwordValidation } from './../validators/validPassword.validator';
+import { passwordValidation } from '../validators/validPassword.validator';
 import { Directive } from '@angular/core';
-import { AuthService } from '../welcome/auth.service';
+import { AuthService } from '../auth.service';
 import { NG_ASYNC_VALIDATORS, AsyncValidator, AsyncValidatorFn, FormControl, Validator, ValidatorFn } from '@angular/forms';
 
 @Directive({

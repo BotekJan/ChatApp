@@ -1,6 +1,6 @@
 import { FormGroup, NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../welcome/auth.service';
+import { AuthService } from '../auth.service';
 import { map, pluck } from 'rxjs/operators';
 
 @Component({
