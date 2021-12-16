@@ -1,0 +1,31 @@
+#chatWindow{
+    border-radius: 45px;
+    background-color: rgba(0, 11, 110, 0.103);
+    height: 100%;
+    padding: 2rem;
+}
+
+#messages{
+    list-style-type: none;
+    height: 50vh;
+    overflow:hidden; 
+    overflow-y:scroll;
+}
+
+.message{
+    color:blue;
+    width: 100%;
+    margin-left: 2vh;
+    margin-right: 2vh;
+}
+
+.my-message {
+    color:grey;
+    float: right;
+    margin-left: 2vh;
+    margin-right: 2vh;
+}
+
+p, a{
+    color: inherit;
+}

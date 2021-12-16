@@ -1,0 +1,11 @@
+.btn-sm, .btn-group {
+margin: 5px;
+margin-left: 0;
+}
+
+#userPanel{
+    border-radius: 45px;
+    background-color: rgba(0, 11, 110, 0.103);
+    
+    
+}

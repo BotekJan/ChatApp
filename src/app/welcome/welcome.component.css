@@ -3,15 +3,17 @@
     padding: 2rem;
 }
 
-
-
-
 #content {
     margin-top: 10vh;
     height: 80vh;
 }
   
+
 .background-dark{
     background-color: rgba(0, 0, 0, 0.40);
     border-radius: 45px;
   }
+
+
+
+

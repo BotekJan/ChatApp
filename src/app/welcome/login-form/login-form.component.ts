@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { FormGroup, NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
@@ -10,7 +11,7 @@ import { map, pluck } from 'rxjs/operators';
 })
 export class LoginFormComponent implements OnInit {
 
-  constructor(private auth : AuthService) { }
+  constructor(private auth : AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -19,12 +20,11 @@ export class LoginFormComponent implements OnInit {
     if(form.valid){
       this.auth.loginUser(form).subscribe(res => this.logIn(res))
       form.resetForm();
-      
+      this.router.navigate(['/Home']);
     }
   }
 
   logIn(token: string){
     localStorage.setItem('token', token);
-    console.log("prihlaseni")
   }
 }

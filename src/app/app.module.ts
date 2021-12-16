@@ -1,3 +1,4 @@
+import { HomeModule } from './home/home.module';
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -6,9 +7,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthService } from './welcome/auth.service';
-import { AuthGuard } from './welcome/auth.guard';
-import { HomeComponent } from './home/home.component';
 import { WelcomeModule } from './welcome/welcome.module';
 
 
@@ -16,7 +14,6 @@ import { WelcomeModule } from './welcome/welcome.module';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +21,8 @@ import { WelcomeModule } from './welcome/welcome.module';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    WelcomeModule
+    WelcomeModule,
+    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
