@@ -19,6 +19,7 @@ export class LoginFormComponent implements OnInit {
   onSubmit(form: NgForm){
     if(form.valid){
       this.auth.loginUser(form).subscribe(res => this.logIn(res))
+      this.auth.getUser().subscribe(res => console.log(res))
       this.router.navigate(['/Home']);
     }
   }

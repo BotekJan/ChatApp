@@ -1,16 +1,10 @@
-import { FormGroup } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
-import { map, filter, catchError, mergeMap, pluck } from 'rxjs/operators';
+import { pluck } from 'rxjs/operators';
 import { Observable } from 'rxjs/Rx';
 import { NgForm } from '@angular/forms';
-
-interface usernameExists {
-  message: string;
-  usernameExists: boolean;
-}
 
 @Injectable()
 export class AuthService {
@@ -51,5 +45,8 @@ export class AuthService {
 
   getToken(){
     return localStorage.getItem('token')
+  }
+  getUser() {
+    return this.http.get(this._url + '/user');
   }
 }
