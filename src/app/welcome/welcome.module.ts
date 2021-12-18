@@ -10,6 +10,8 @@ import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WelcomeRoutingModule } from './welcome-routing.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptorService } from './token-interceptor.service';
 
 
 
@@ -28,6 +30,6 @@ import { WelcomeRoutingModule } from './welcome-routing.module';
     FormsModule,
     WelcomeRoutingModule
   ],
-  providers: [AuthService, AuthGuard],
+  providers: [AuthService, AuthGuard, {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true}],
 })
 export class WelcomeModule { }
