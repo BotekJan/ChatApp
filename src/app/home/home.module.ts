@@ -19,6 +19,9 @@ import { MessageInputComponent } from './message-input/message-input.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule
+  ],
+  providers: [
+    
   ]
 })
 export class HomeModule { }
