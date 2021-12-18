@@ -24,14 +24,9 @@ router.get("/", checkAuth, (req, res, next) => {
   });
 
   router.post("/filter", checkAuth, (req, res, next) => {
-    Uzivatel.find({ jmeno: RegExp('^.*'+ req.body.filter +'.*$') })
+    Uzivatel.find({ jmeno: RegExp('^.*'+ req.body.filter +'.*$')}, {_id : req.userData.userId})
       .then((user) => {
         if (user) {
-          for(let u of user){
-            if(u.jmeno === req.userData.jmeno){
-              user[u] = null;
-            }
-          }
           return res.status(200).json({
             Users: user
           });
