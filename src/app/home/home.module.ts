@@ -25,10 +25,6 @@ import { TokenInterceptorService } from '../welcome/token-interceptor.service';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [
-    UserService,
-    AuthService,
-    {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true}
-  ]
+  
 })
 export class HomeModule { }

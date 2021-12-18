@@ -13,22 +13,28 @@ export class UserPanelComponent implements OnInit {
   user: any;
 
   constructor(private userService: UserService, private auth: AuthService, private router: Router) {
-    // this.auth.getUser().subscribe(res => 
-    //   console.log(res), err =>{
-    //   if(err instanceof HttpErrorResponse){
-    //     if(err.status === 401){
-    //       console.log(err)
-    //       this.router.navigate(['/Login']);
-    //     }    
-    //   }
-    // });
+    
   }
 
   ngOnInit(): void {
+    this.auth.getUser().subscribe(res => 
+      this.user = res, err =>{
+      if(err instanceof HttpErrorResponse){
+        if(err.status === 401){
+          console.log(err)
+          this.router.navigate(['/Login']);
+        }    
+      }
+    });
   }
 
   getUser(){
     this.auth.getUser().subscribe(res => console.log(res));
+  }
+
+  logoutUser(){
+    this.auth.logoutUser();
+    this.router.navigate(['/Login'])
   }
 
 }
