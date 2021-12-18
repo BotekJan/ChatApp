@@ -37,6 +37,6 @@ export class ModalComponent {
   }
 
   filterUsernames(model: NgModel){
-    this.userService.getFilteredUsers(model.value).subscribe(res => this.filteredUsers);
+    this.userService.getFilteredUsers(model.value).subscribe(res => console.log(res));
   }
 }

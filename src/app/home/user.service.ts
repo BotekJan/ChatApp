@@ -17,7 +17,7 @@ export class UserService {
   }
 
   getFilteredUsers(fil: string){
-    return this.http.post(this._url + '/filtered', {filter: fil})
+    return this.http.post(this._url + '/filter', {filter: fil})
   }
 
 }

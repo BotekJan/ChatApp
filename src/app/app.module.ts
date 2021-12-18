@@ -13,6 +13,7 @@ import { AuthService } from './welcome/auth.service';
 import { TokenInterceptorService } from './welcome/token-interceptor.service';
 import { AuthGuard } from './welcome/auth.guard';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -28,6 +29,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReactiveFormsModule,
     WelcomeModule,
     HomeModule,
+    CommonModule
 
   ],
   providers: [
