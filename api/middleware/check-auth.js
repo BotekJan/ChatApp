@@ -4,7 +4,7 @@ module.exports = (req, res, next) => {
     if(!req.headers.Authorization){
         return res.status(401).json({
             message: 'no request header Authorization',
-            header: req.header
+            header: req.headers.Authorization
         });
     }
     try {
