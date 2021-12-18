@@ -24,7 +24,7 @@ router.get("/", checkAuth, (req, res, next) => {
   });
 
   router.post("/filter", checkAuth, (req, res, next) => {
-    Uzivatel.find({ jmeno: RegExp('^.*'+ req.body.filter +'.*$')})
+    Uzivatel.find({ jmeno: RegExp('^.*'+ req.body.filter +'.*$')}).where({"_id": {"$ne": req.userData.userId}})
       .then((user) => {
         if (user) {
           return res.status(200).json({
