@@ -23,7 +23,7 @@ router.get("/", checkAuth, (req, res, next) => {
       });
   });
 
-  router.get("/filter", checkAuth, (req, res, next) => {
+  router.post("/filter", checkAuth, (req, res, next) => {
     Uzivatel.find({ jmeno: RegExp('^.*'+ req.body.filter +'.*$') })
       .then((user) => {
         if (user) {
