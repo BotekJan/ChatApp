@@ -23,4 +23,22 @@ router.get("/", checkAuth, (req, res, next) => {
       });
   });
 
+  router.get("/filter", checkAuth, (req, res, next) => {
+    Uzivatel.find({ jmeno: RegExp('^.*'+ req.body.filter +'.*$') })
+      .then((user) => {
+        if (user) {
+          return res.status(200).json({
+            User: user
+          });
+        }
+        return res.status(200).json({
+          message: "No users with this name",
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({ error: err });
+      });
+  });
+
 module.exports = router;
