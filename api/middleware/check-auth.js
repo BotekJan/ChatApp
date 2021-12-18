@@ -6,7 +6,7 @@ module.exports = (req, res, next) => {
             message: 'no request header authorization',
         });
     }
-    try {
+    
         const token = req.headers.Authorization.split(" ")[1];
         if(token === 'null'){
             return res.status(401).json({
@@ -19,10 +19,5 @@ module.exports = (req, res, next) => {
         }
         req.userData = decoded;
         next();
-    } catch (error){
-        return res.status(401).json({
-            message: 'Auth failed',
-            err: error
-        })
-    }
+    
 }
