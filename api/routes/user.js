@@ -3,9 +3,10 @@ const router = express.Router();
 const mongoose = require("mongoose");
 
 const checkAuth = require("../middleware/check-auth")
+const Uzivatel = require("../models/uzivatel");
 
 router.get("/", checkAuth, (req, res, next) => {
-    Uzivatel.findOne({ _id: req.decoded._id })
+    Uzivatel.findOne({ _id: req.userData.userId })
       .then((user) => {
         if (user) {
           return res.status(200).json({
