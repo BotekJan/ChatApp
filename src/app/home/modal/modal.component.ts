@@ -3,6 +3,7 @@ import {Component, Input} from '@angular/core';
 
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { NgModel } from '@angular/forms';
+import { pluck } from 'rxjs/operators';
 
 @Component({
   selector: 'modal',
@@ -37,6 +38,6 @@ export class ModalComponent {
   }
 
   filterUsernames(model: NgModel){
-    this.userService.getFilteredUsers(model.value).subscribe(res => console.log(res));
+    this.userService.getFilteredUsers(model.value).pipe(pluck('User')).subscribe(res => this.filteredUsers = res);
   }
 }
