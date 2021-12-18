@@ -13,9 +13,12 @@ export class UserPanelComponent implements OnInit {
   user: any;
 
   constructor(private userService: UserService, private auth: AuthService, private router: Router) {
-    this.userService.getUser().subscribe(res => this.user = res, err =>{
+    if(!this.auth.getToken())
+    this.userService.getUser().subscribe(res => 
+      this.user = res, err =>{
       if(err instanceof HttpErrorResponse){
         if(err.status === 401){
+          console.log(err)
           this.router.navigate(['/Login']);
         }    
       }
