@@ -1,13 +1,14 @@
 <div id="userPanel">
-<h1>Name</h1>
+<h1>{{this.getUsername()}}</h1>
 <div id="profileButtons">
   <a class="btn btn-primary btn-sm" href="#" role="button">Edit profile</a>
   <button class="btn btn-primary btn-sm" type="button" (click)="this.logoutUser()">Logout</button>
 </div>
 <div class="btn-group" role="group" aria-label="Chats">
-      <button type="button" class="btn btn-primary">Add Friend</button>
-      <button type="button" class="btn btn-primary">New Group Chat</button>
+      <modal [buttonText]="'Add Friend'"></modal>
+      <modal [buttonText]="'New Group Chat'" [createGroup]="true"></modal>
       <button type="button" class="btn btn-primary">Notifications</button>
+      
 </div>
+
 </div>
-<button name="" id="" class="btn btn-primary" role="button" (click)="this.getUser()">Get User</button>

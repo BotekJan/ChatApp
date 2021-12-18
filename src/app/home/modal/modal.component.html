@@ -1,0 +1,26 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title" style="color: black;">{{this.createGroup ? "Create group" : "Add friend"}}</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+        <input required ngModel #filter="ngModel" name="filter" type="text" class="form-control" id="filter" placeholder="Filter users" (change)="filterUsernames(filter)">
+
+        <form>
+            <div *ngForOf="let user of this.filteredUsers;index as i; jmeno as j" [ngClass]="{'form-check': this.createGroup, 'form-radio' : !this.createGroup}">
+                <input [type]="this.createGroup ? 'checkbox' :'radio'" class="form-check-input" id="check{{i}}" name="option{{i}}" value="j" style="color: black;">
+                <label class="form-check-label" for="check{{i}}">{{j}}</label>
+              </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    </div>
+  </ng-template>
+  
+  <button class="btn btn-primary" (click)="open(content)" type="button">{{this.buttonText}}</button>
+  
+  

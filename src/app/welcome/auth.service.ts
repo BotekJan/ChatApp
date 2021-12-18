@@ -50,7 +50,4 @@ export class AuthService {
   getToken(){
     return localStorage.getItem('token')
   }
-  getUser() {
-    return this.http.get(this._url + '/user');
-  }
 }

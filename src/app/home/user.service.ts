@@ -13,7 +13,11 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   getUser() {
-    return this.http.get(this._url);
+    return this.http.get(this._url).pipe(pluck('User'));
+  }
+
+  getFilteredUsers(fil: string){
+    return this.http.post(this._url + '/filtered', {filter: fil})
   }
 
 }

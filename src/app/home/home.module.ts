@@ -9,6 +9,7 @@ import { ChatWindowComponent } from './chat-window/chat-window.component';
 import { MessageInputComponent } from './message-input/message-input.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from '../welcome/token-interceptor.service';
+import { ModalComponent } from './modal/modal.component';
 
 
 
@@ -18,7 +19,8 @@ import { TokenInterceptorService } from '../welcome/token-interceptor.service';
     HomeComponent,
     UserPanelComponent,
     ChatWindowComponent,
-    MessageInputComponent
+    MessageInputComponent,
+    ModalComponent
   ],
   imports: [
     CommonModule,

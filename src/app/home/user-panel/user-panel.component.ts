@@ -3,6 +3,7 @@ import { AuthService } from './../../welcome/auth.service';
 import { UserService } from './../user.service';
 import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
+import { pluck } from 'rxjs/operators';
 
 @Component({
   selector: 'user-panel',
@@ -11,13 +12,13 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class UserPanelComponent implements OnInit {
   user: any;
-
+  private username: any;
   constructor(private userService: UserService, private auth: AuthService, private router: Router) {
     
   }
 
   ngOnInit(): void {
-    this.auth.getUser().subscribe(res => 
+    this.userService.getUser().subscribe(res => 
       this.user = res, err =>{
       if(err instanceof HttpErrorResponse){
         if(err.status === 401){
@@ -26,10 +27,11 @@ export class UserPanelComponent implements OnInit {
         }    
       }
     });
+    this.userService.getUser().pipe(pluck('jmeno')).subscribe(res => this.username = res)
   }
 
-  getUser(){
-    this.auth.getUser().subscribe(res => console.log(res));
+  getUsername(){
+    return this.username
   }
 
   logoutUser(){

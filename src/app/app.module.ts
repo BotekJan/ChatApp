@@ -12,6 +12,7 @@ import { UserService } from './home/user.service';
 import { AuthService } from './welcome/auth.service';
 import { TokenInterceptorService } from './welcome/token-interceptor.service';
 import { AuthGuard } from './welcome/auth.guard';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -26,7 +27,8 @@ import { AuthGuard } from './welcome/auth.guard';
     HttpClientModule,
     ReactiveFormsModule,
     WelcomeModule,
-    HomeModule
+    HomeModule,
+
   ],
   providers: [
     UserService,
