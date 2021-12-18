@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 const checkAuth = require("../middleware/check-auth")
 
 router.get("/", checkAuth, (req, res, next) => {
-    Uzivatel.findOne({ jmeno: req.body.jmeno })
+    Uzivatel.findOne({ _id: req.decoded._id })
       .then((user) => {
         if (user) {
           return res.status(200).json({
