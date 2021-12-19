@@ -1,8 +1,12 @@
-<h1>hello</h1>
+<div style="margin-top: 3vh;">
+    <ul style=" list-style-type: none;">
+        <li *ngFor="let notif of notifications ; index as i">
+            <p>{{notif.type}} from {{notif.from}}</p>
+            <div style="width: 100%;">
+                <button type="button" class="btn btn-success" (click)="this.react(true,i)">Accept</button>
+                <button type="button" class="btn btn-danger" (click)="this.react(true, i)">Decline</button>
+            </div>
+        </li>
+    </ul>
+</div>
 
-<ul>
-    <li *ngFor="let notif of notifications">
-        <p>{{notif.type}} from {{notif.from}}</p>
-    </li>
-</ul>
-<button class="btn btn-primary" type="button" (click)="this.getNotifications">get notifications</button>

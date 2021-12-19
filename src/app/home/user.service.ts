@@ -29,4 +29,11 @@ export class UserService {
     return this.http.get(this._url + '/notifications');
   }
 
+  reactToNotification(obj: any, accept: boolean ){
+    return this.http.post(this._url + '/notificationAnswer', {
+      notifId: obj._id,
+      accept: accept
+    })
+  }
+
 }
