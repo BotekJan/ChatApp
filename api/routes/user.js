@@ -26,11 +26,10 @@ router.get("/", checkAuth, (req, res, next) => {
 
 router.get("/notifications", checkAuth, (req, res, next) => {
   Uzivatel.findOne({ _id: req.userData.userId })
-    .select("notifications")
     .then((notif) => {
       if (notif) {
         return res.status(200).json({
-          notifications: notif,
+          notifications: notif.notification,
         });
       }
       return res.status(200).json({
