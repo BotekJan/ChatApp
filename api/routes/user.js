@@ -3,7 +3,7 @@ const router = express.Router();
 const mongoose = require("mongoose");
 
 const checkAuth = require("../middleware/check-auth");
-const notification = require("../models/notification");
+const Notification = require("../models/notification");
 const Uzivatel = require("../models/uzivatel");
 
 router.get("/", checkAuth, (req, res, next) => {
