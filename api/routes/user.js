@@ -147,7 +147,7 @@ router.post("/notificationAnswer", checkAuth, (req, res, next) => {
       return res.status(200).json({
         message: "Notification doesnt exist",
         notfiId: req.body.notif._id,
-        notifications: user.notifications
+        notifications: user
       });
     })
     .catch((err) => {
