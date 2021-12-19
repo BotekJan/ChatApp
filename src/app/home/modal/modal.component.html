@@ -26,7 +26,7 @@
         </form>
     </div>
     <div class="modal-footer">
-      <button type="submit" class="btn btn-success" form="addUser" [disabled]="!chatForm.form.valid || !chatForm.form.controls ">Save</button>
+      <button type="submit" class="btn btn-success" form="addUser" [disabled]="!chatForm.form.valid || !chatForm.form.controls " (click)="modal.dismiss('Cross click')">Save</button>
     </div>
   </ng-template>
   
