@@ -24,7 +24,7 @@ export class NotificationListComponent implements OnInit {
   }
 
   react(accept: boolean, index: number){
-    this.userService.reactToNotification(this.notifications[index], accept);
+    this.userService.reactToNotification(this.notifications[index], accept).subscribe(res => console.log(res));
     this.notifications.splice(index,1);
   }
 }
