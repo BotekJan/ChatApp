@@ -62,7 +62,7 @@ router.post("/filter", checkAuth, (req, res, next) => {
 });
 
 router.post("/addFriend", checkAuth, (req, res, next) => {
-  Uzivatel.updateOne(
+  Uzivatel.findOneAndUpdate(
     { jmeno: req.jmeno },
     {$push: { notification: 3
   }
