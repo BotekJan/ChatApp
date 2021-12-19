@@ -2,7 +2,8 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 
-const checkAuth = require("../middleware/check-auth")
+const checkAuth = require("../middleware/check-auth");
+const notification = require("../models/notification");
 const Uzivatel = require("../models/uzivatel");
 
 router.get("/", checkAuth, (req, res, next) => {
@@ -11,6 +12,24 @@ router.get("/", checkAuth, (req, res, next) => {
         if (user) {
           return res.status(200).json({
             User: user
+          });
+        }
+        return res.status(200).json({
+          message: "User does not exist",
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({ error: err });
+      });
+  });
+
+  router.get("/notifications", checkAuth, (req, res, next) => {
+    Uzivatel.findOne({ _id: req.userData.userId }).select('notifications')
+      .then((notif) => {
+        if (notif) {
+          return res.status(200).json({
+            notifications: notif
           });
         }
         return res.status(200).json({
@@ -40,5 +59,27 @@ router.get("/", checkAuth, (req, res, next) => {
         res.status(500).json({ error: err });
       });
   });
+
+  router.post("/addFriend", checkAuth, (req, res, next) => {
+    Uzivatel.updateOne({ jmeno: req.jmeno}, {notification: notification.add(new Notification({
+      _id: new new mongoose.Types.ObjectId(),
+      from: req.userData.jmeno,
+      time: Date(),
+      type: 'friend-request'
+    }))})
+      .then((user) => {
+        if (user) {
+         use
+        }
+        return res.status(200).json({
+          message: "No users with this name",
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json({ error: err });
+      });
+  });
+
 
 module.exports = router;
