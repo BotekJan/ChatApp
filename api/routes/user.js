@@ -76,7 +76,7 @@ router.post("/addFriend", checkAuth, (req, res, next) => {
     .then((user) => {
       if (user) {
         return res.status(200).json({
-          message: "friend request send",
+          usr : user,
         });
       }
       return res.status(200).json({
