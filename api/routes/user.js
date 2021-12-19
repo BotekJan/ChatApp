@@ -69,7 +69,9 @@ router.get("/", checkAuth, (req, res, next) => {
     }))})
       .then((user) => {
         if (user) {
-         use
+         return res.status(200).json({
+           message: 'friend request send'
+         })
         }
         return res.status(200).json({
           message: "No users with this name",
