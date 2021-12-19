@@ -105,27 +105,26 @@ router.post("/notificationAnswer", checkAuth, (req, res, next) => {
             obrazek: "",
           });
 
-          chat.save();
+          chat.save().then((result) => {
+            Uzivatel.findOneAndUpdate(
+              { jmeno: req.userData.jmeno },
+              { $push: { pratele: chat._id } }
+            );
+            Uzivatel.findOneAndUpdate(
+              { jmeno: req.body.notif.jmeno },
+              { $push: { pratele: chat._id } }
+            );
 
-          Uzivatel.findOneAndUpdate(
-            { jmeno: req.userData.jmeno },
-            { $push: { pratele: chat._id } }
-          );
-          Uzivatel.findOneAndUpdate(
-            { jmeno: req.body.notif.jmeno },
-            { $push: { pratele: chat._id } }
-          );
-          
-          //remove notification from current user I hope
-          Uzivatel.findOneAndUpdate(
-            { jmeno: req.userData.jmeno },
-            {
-              $pull: {
-                notification: req.body.notif,
-              },
-            }
-          );
-
+            //remove notification from current user I hope
+            Uzivatel.findOneAndUpdate(
+              { jmeno: req.userData.jmeno },
+              {
+                $pull: {
+                  notification: req.body.notif,
+                },
+              }
+            );
+          });
 
           return res.status(200).json({
             message: "new chat has been created",
@@ -140,14 +139,14 @@ router.post("/notificationAnswer", checkAuth, (req, res, next) => {
             }
           );
           return res.status(200).json({
-            message: 'friend request has been declined'
-          })
+            message: "friend request has been declined",
+          });
         }
       }
       return res.status(200).json({
         message: "Notification doesnt exist",
         notfiId: req.body.notif._id,
-        notifications: user
+        notifications: user,
       });
     })
     .catch((err) => {
