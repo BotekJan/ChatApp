@@ -96,7 +96,7 @@ router.post("/addFriend", checkAuth, (req, res, next) => {
 router.post("/notificationAnswer", checkAuth, (req, res, next) => {
   Uzivatel.findOne({ _id: req.userData.userId })
     .then((user) => {
-      if (user.notification.some((e) => e._id === req.body.notif._id)) {
+      if (user.notification.some((e) => e._id == req.body.notif._id)) {
         if (req.body.accept) {
           let chat = new Chat({
             _id: new mongoose.Types.ObjectId(),
