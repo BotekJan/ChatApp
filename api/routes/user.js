@@ -106,11 +106,11 @@ router.post("/notificationAnswer", checkAuth, (req, res, next) => {
           });
 
           chat.save().then((result) => {
-            Uzivatel.findOneAndUpdate(
+            Uzivatel.update(
               { jmeno: req.userData.jmeno },
               { $push: { pratele: chat._id } }
             );
-            Uzivatel.findOneAndUpdate(
+            Uzivatel.update(
               { jmeno: req.body.notif.jmeno },
               { $push: { pratele: chat._id } }
             );
