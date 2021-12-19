@@ -4,7 +4,8 @@
           <user-panel></user-panel>
       </div> 
       <div class="col-xl-8">
-        <chat-window></chat-window>
+        <chat-window *ngIf="chatsPage"></chat-window>
+        <notifications *ngIf="!chatsPage"></notifications>
       </div>
     </div>
   </div>

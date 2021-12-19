@@ -10,6 +10,9 @@ import { MessageInputComponent } from './message-input/message-input.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptorService } from '../welcome/token-interceptor.service';
 import { ModalComponent } from './modal/modal.component';
+import { NotificationsComponent } from './notifications/notifications.component';
+import { ChatListComponent } from './chat-list/chat-list.component';
+import { NotificationListComponent } from './notification-list/notification-list.component';
 
 
 
@@ -20,7 +23,10 @@ import { ModalComponent } from './modal/modal.component';
     UserPanelComponent,
     ChatWindowComponent,
     MessageInputComponent,
-    ModalComponent
+    ModalComponent,
+    NotificationsComponent,
+    ChatListComponent,
+    NotificationListComponent
   ],
   imports: [
     CommonModule,
