@@ -63,8 +63,13 @@ router.post("/filter", checkAuth, (req, res, next) => {
 
 router.post("/addFriend", checkAuth, (req, res, next) => {
   Uzivatel.findOneAndUpdate(
-    { jmeno: req.jmeno },
-    {$push: { notification: 3
+    {jmeno: req.body.jmeno },
+    {$push: { notification: {
+      _id:  new mongoose.Types.ObjectId(), 
+      from: req.userData.jmeno,
+      time: Date(),
+      type: "friend-request"
+    }
   }
 }
   )
