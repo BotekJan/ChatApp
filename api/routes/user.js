@@ -68,7 +68,7 @@ router.post("/addFriend", checkAuth, (req, res, next) => {
     {
       $push: {
         notification: new Notification({
-          _id: new new mongoose.Types.ObjectId()(),
+          _id:  new mongoose.Types.ObjectId()(),
           from: req.userData.jmeno,
           time: Date(),
           type: "friend-request",
