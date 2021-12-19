@@ -2,7 +2,8 @@
 <form (ngSubmit)="onSubmit(registerForm)" #registerForm="ngForm">
     <div class="mb-3">
       <label for="name" class="form-label">Jméno</label>
-      <input required usernameExistsValidator ngModel minlength="3" maxlength="32" name="name" #name="ngModel" type="text"  class="form-control" id="name">
+      <!-- I guees that password Validator is accually a userNameExistsValidator and it just got messed up somewhere and there is not enought time to fix it :)-->
+      <input required passwordValidator ngModel minlength="3" maxlength="32" name="name" #name="ngModel" type="text"  class="form-control" id="name">
       <div class="alert alert-danger" *ngIf="name.dirty && !name.valid">
         <div *ngIf="name.errors?.['required']">*Jméno je povinné</div>
         <div *ngIf="name.errors?.['minlength']">*Jméno musí mít alespoň {{name.errors?.['minlength']?.['requiredLength']}}  znaky</div>

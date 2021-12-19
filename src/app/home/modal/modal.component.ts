@@ -2,7 +2,7 @@ import { UserService } from './../user.service';
 import {Component, Input} from '@angular/core';
 
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import { NgModel } from '@angular/forms';
+import { NgModel, NgForm } from '@angular/forms';
 import { pluck } from 'rxjs/operators';
 
 @Component({
@@ -25,6 +25,8 @@ export class ModalComponent {
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
+
+    this.filteredUsers = null;
   }
 
   private getDismissReason(reason: any): string {
@@ -38,6 +40,18 @@ export class ModalComponent {
   }
 
   filterUsernames(model: NgModel){
-    this.userService.getFilteredUsers(model.value).pipe(pluck('User')).subscribe(res => this.filteredUsers = res);
+    if(model.value !== ""){
+      this.userService.getFilteredUsers(model.value).pipe(pluck('Users')).subscribe(res => {this.filteredUsers = res});
+    } else {
+      this.filteredUsers = null
+    }
+  }
+
+  onSubmit(form: NgForm){
+    console.log(form)
+  }
+
+  log(x: any){
+    console.log(x)
   }
 }

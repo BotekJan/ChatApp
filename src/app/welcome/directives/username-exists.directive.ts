@@ -9,6 +9,8 @@ import { NG_ASYNC_VALIDATORS, AsyncValidator, AsyncValidatorFn, FormControl, Val
 true}]
 })
 
+
+//this is actually validPasswordDirective
 export class usernameExistsValidatorDirective implements Validator {
   validator: ValidatorFn;
     

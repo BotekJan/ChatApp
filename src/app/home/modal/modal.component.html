@@ -7,17 +7,26 @@
     </div>
     <div class="modal-body">
 
-        <input required ngModel #filter="ngModel" name="filter" type="text" class="form-control" id="filter" placeholder="Filter users" (change)="filterUsernames(filter)">
+        <input required ngModel #filter="ngModel" name="filter" type="text" class="form-control" id="filter" placeholder="Filter users" (input)="filterUsernames(filter)">
 
-        <form>
-            <div *ngFor="let user of this.filteredUsers;index as i" [ngClass]="{'form-check': this.createGroup, 'form-radio' : !this.createGroup}">
-                <input [type]="this.createGroup ? 'checkbox' :'radio'" class="form-check-input" id="check{{i}}" name="option{{i}}" value="user.jmeno" style="color: black;">
-                <label class="form-check-label" for="check{{i}}" style="color: black;">{{user.jmeno}}</label>
+        <form id="addUser" (ngSubmit)="onSubmit(chatForm)" #chatForm="ngForm" style="text-align: center; padding-top: 3vh;">
+          
+            <!-- <div *ngFor="let user of this.filteredUsers;index as i" [ngClass]="{'form-check': this.createGroup, 'form-radio' : !this.createGroup}" >
+              <label class="form-check-label" for="check {{i}}" style="color: black;">{{user.jmeno}}
+                <input [value]="user.jmeno" (click)="log(userModel)" #userModel="ngModel" ngModel required [type]="this.createGroup ? 'checkbox' :'radio'" class="form-check-input" id="check {{i}}" name="user">                
+                </label>
+              </div> -->
+              <div *ngFor="let user of this.filteredUsers; index as i" [ngClass]="{'form-check': this.createGroup, 'form-radio' : !this.createGroup}">
+                <label class="form-check-label" for="check {{i}}" style="color: black;">{{user.jmeno}}
+
+                  <input *ngIf="!this.createGroup" required #userModel="ngModel" ngModel type="radio" [value]="user.jmeno" name="user" id="check {{i}}" class="form-check-input">
+                  <input *ngIf="this.createGroup" #userModel="ngModel" ngModel type="checkbox" [value]="false" [name]="user.jmeno" id="check {{i}}" class="form-check-input">
+                  </label>
               </div>
         </form>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+      <button type="submit" class="btn btn-success" form="addUser" [disabled]="!chatForm.form.valid || !chatForm.form.controls ">Save</button>
     </div>
   </ng-template>
   

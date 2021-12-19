@@ -1,3 +1,4 @@
+import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -18,6 +19,10 @@ export class UserService {
 
   getFilteredUsers(fil: string){
     return this.http.post(this._url + '/filter', {filter: fil})
+  }
+
+  addFriend(form :NgForm){
+    return this.http.post(this._url + '/addFriend', {jmeno: form.controls.user.value})
   }
 
 }

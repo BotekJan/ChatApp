@@ -1,3 +1,4 @@
+import { passwordValidationDirective } from './directives/validPasswordDirective';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ForbiddenValidatorDirective } from './directives/forbiddenName.directive';
@@ -22,7 +23,8 @@ import { TokenInterceptorService } from './token-interceptor.service';
     RegisterFormComponent,
     usernameExistsValidatorDirective,
     MustMatchDirective,
-    ForbiddenValidatorDirective
+    ForbiddenValidatorDirective,
+    passwordValidationDirective
   ],
   imports: [
     CommonModule,

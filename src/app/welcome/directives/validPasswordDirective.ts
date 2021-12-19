@@ -8,6 +8,8 @@ import { NG_ASYNC_VALIDATORS, AsyncValidator, AsyncValidatorFn, FormControl } fr
   providers: [{provide: NG_ASYNC_VALIDATORS, useExisting: passwordValidationDirective, multi:true}]
 })
 
+
+//this is actually userNameExistsValidatorDirective, dont tell anyone
 export class passwordValidationDirective implements AsyncValidator {
   validator: AsyncValidatorFn;
     
