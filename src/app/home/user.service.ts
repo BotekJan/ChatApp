@@ -25,4 +25,8 @@ export class UserService {
     return this.http.post(this._url + '/addFriend', {jmeno: form.controls.user.value})
   }
 
+  getNotifications(){
+    return this.http.get(this._url + '/notifications');
+  }
+
 }

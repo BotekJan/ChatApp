@@ -12,9 +12,10 @@ import { pluck } from 'rxjs/operators';
 })
 export class UserPanelComponent implements OnInit {
   user: any;
+  chatsPage = true;
   private username: any;
   constructor(private userService: UserService, private auth: AuthService, private router: Router) {
-    
+    this.chatsPage = router.url ==="/Home"
   }
 
   ngOnInit(): void {
@@ -37,6 +38,10 @@ export class UserPanelComponent implements OnInit {
   logoutUser(){
     this.auth.logoutUser();
     this.router.navigate(['/Login'])
+  }
+
+  switchPages(){
+    
   }
 
 }

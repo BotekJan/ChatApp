@@ -2,6 +2,8 @@
     <div class="row" id="home">
       <div class="col-xl-4">
           <user-panel></user-panel>
+          <chat-list *ngIf="chatsPage"></chat-list>
+          <notification-list *ngIf="!chatsPage"></notification-list>
       </div> 
       <div class="col-xl-8">
         <chat-window *ngIf="chatsPage"></chat-window>

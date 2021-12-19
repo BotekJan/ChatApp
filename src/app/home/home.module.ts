@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { AuthService } from './../welcome/auth.service';
 import { UserService } from './user.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -31,7 +32,8 @@ import { NotificationListComponent } from './notification-list/notification-list
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   
 })

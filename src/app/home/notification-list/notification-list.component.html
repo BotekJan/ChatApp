@@ -1,1 +1,5 @@
-<p>notification-list works!</p>
+<ul>
+    <li *ngFor="let notif of notifications">
+        <p>{{notif.type}} from {{notif.from}}</p>
+    </li>
+</ul>
