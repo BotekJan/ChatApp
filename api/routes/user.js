@@ -108,11 +108,11 @@ router.post("/notificationAnswer", checkAuth, (req, res, next) => {
           chat.save().then((result) => {
             Uzivatel.updateOne(
               { jmeno: req.userData.jmeno },
-              { $push: { pratele: chat._id } }
+              { $push: { pratele: {chat_id: chat._id} } }
             );
             Uzivatel.updateOne(
               { jmeno: req.body.notif.jmeno },
-              { $push: { pratele: chat._id } }
+              { $push: { pratele: {chat_id: chat._id} } }
             );
 
             //remove notification from current user I hope
@@ -120,7 +120,7 @@ router.post("/notificationAnswer", checkAuth, (req, res, next) => {
               { jmeno: req.userData.jmeno },
               {
                 $pull: {
-                  notification: req.body.notif,
+                  notification: {_id: req.body.notif._id},
                 },
               }
             );
