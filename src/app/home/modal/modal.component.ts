@@ -48,7 +48,9 @@ export class ModalComponent {
   }
 
   onSubmit(form: NgForm){
-    console.log(form)
+    if(form.controls.user){
+      this.userService.addFriend(form).subscribe(res => console.log(res))
+    }
   }
 
   log(x: any){
