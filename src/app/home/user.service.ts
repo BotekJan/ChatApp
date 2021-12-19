@@ -31,7 +31,7 @@ export class UserService {
 
   reactToNotification(obj: any, accept: boolean ){
     return this.http.post(this._url + '/notificationAnswer', {
-      notifId: obj._id,
+      notif: obj,
       accept: accept
     })
   }
