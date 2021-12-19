@@ -1,5 +1,8 @@
+<h1>hello</h1>
+
 <ul>
     <li *ngFor="let notif of notifications">
         <p>{{notif.type}} from {{notif.from}}</p>
     </li>
 </ul>
+<button class="btn btn-primary" type="button" (click)="this.getNotifications">get notifications</button>

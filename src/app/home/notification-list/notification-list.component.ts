@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class NotificationListComponent implements OnInit {
   notifications: any;
   constructor(private userService: UserService) { 
-    this.getNotifications
+    this.getNotifications()
   }
 
   ngOnInit(): void {
@@ -21,4 +21,6 @@ export class NotificationListComponent implements OnInit {
       console.log(res)
     });
   }
+
+
 }
