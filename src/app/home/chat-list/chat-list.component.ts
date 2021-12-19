@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'chat-list',
@@ -6,10 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./chat-list.component.css']
 })
 export class ChatListComponent implements OnInit {
+  @Output() pickedChat = new EventEmitter<boolean>();
 
+  chats:any = [];
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  pick(index:number){
+    this.pickedChat.emit(this.chats[index])
+  }
 }
+
+

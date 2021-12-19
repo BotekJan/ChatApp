@@ -1,7 +1,8 @@
-<form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
-    <div class="mb-3">
-      <input required ngModel name="name" #name="ngModel" type="text"  class="form-control" id="name" >
-      <div class="alert alert-danger" *ngIf="name.dirty && !name.valid">
-        <div *ngIf="name.errors?.['required']">*Jméno je povinné</div>
+<form (ngSubmit)="onSubmit(messageInput)" #messageInput="ngForm">
+      <div class="input-group mb-3">
+        <input required ngModel name="message" #message="ngModel" type="text"  class="form-control" id="message" >
+        <div class="input-group-append">
+          <button class="btn btn-outline-primary" type="submit">Odeslat</button>
+        </div>
       </div>
-    </div>
+</form>

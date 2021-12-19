@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   chatsPage = true;
+  currentChat:any = null
 
   constructor(private router : Router) { 
     this.chatsPage = router.url ==="/Home"
@@ -16,4 +17,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  setCurrentChat(newChat:any){
+    this.currentChat = newChat
+  }
 }

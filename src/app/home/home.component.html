@@ -2,11 +2,11 @@
     <div class="row" id="home">
       <div class="col-xl-4">
           <user-panel></user-panel>
-          <chat-list *ngIf="chatsPage"></chat-list>
+          <chat-list *ngIf="chatsPage" (pickedChat)="setCurrentChat($event)"></chat-list>
           <notification-list *ngIf="!chatsPage"></notification-list>
       </div> 
       <div class="col-xl-8">
-        <chat-window *ngIf="chatsPage"></chat-window>
+        <chat-window *ngIf="chatsPage" [chat]="this.currentChat"></chat-window>
         <notifications *ngIf="!chatsPage"></notifications>
       </div>
     </div>

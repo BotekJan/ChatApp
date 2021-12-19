@@ -1,19 +1,20 @@
+import { ChatService } from './../chat.service';
 import { NgForm } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-message-input',
+  selector: 'message-input',
   templateUrl: './message-input.component.html',
   styleUrls: ['./message-input.component.css']
 })
 export class MessageInputComponent implements OnInit {
-
-  constructor() { }
+  @Input() chat:any;
+  constructor(private chatService: ChatService) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(form: NgForm){
-
+    this.chatService.sendMessage(this.chat, form.controls.message.value);
   }
 }

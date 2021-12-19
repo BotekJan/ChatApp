@@ -1,1 +1,9 @@
-<p>chat-list works!</p>
+<div style="margin-top: 3vh;">
+    <ul style=" list-style-type: none;">
+        <li *ngFor="let chat of chats ; index as i">
+            <button type="button" class="btn btn-block btn-primary" (click)="pick(i)">{{chat.name}}</button>
+            
+        </li>
+    </ul>
+</div>
+
