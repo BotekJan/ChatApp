@@ -105,32 +105,29 @@ router.post("/notificationAnswer", checkAuth, (req, res, next) => {
             obrazek: "",
           });
 
-          chat.save().then((result) => {
-            Uzivatel.updateOne(
-              { jmeno: req.userData.jmeno },
-              { $push: { pratele: {chat_id: result._id} } }
-            );
-            Uzivatel.updateOne(
-              { jmeno: req.body.notif.from },
-              { $push: { pratele: {chat_id:  result._id} } }
-            );
+          chat.save();
 
-            //remove notification from current user I hope
-            Uzivatel.updateOne(
-              { jmeno: req.userData.jmeno },
-              {
-                $pull: {
-                  notification: {_id: req.body.notif._id},
-                },
-              }
-            );
-            return res.status(200).json({
-              message: "return from inside then",
-            })
-          }).catch((err) => {
-            console.log(err);
-            res.status(500).json({ error: err });
-          });
+          Uzivatel.updateOne(
+            { jmeno: req.userData.jmeno },
+            { $push: { pratele: {chat_id: result._id} } }
+          );
+          Uzivatel.updateOne(
+            { jmeno: req.body.notif.from },
+            { $push: { pratele: {chat_id:  result._id} } }
+          );
+
+          //remove notification from current user I hope
+          Uzivatel.updateOne(
+            { jmeno: req.userData.jmeno },
+            {
+              $pull: {
+                notification: {_id: req.body.notif._id},
+              },
+            }
+          );
+          return res.status(200).json({
+            message: "friend added",
+          })
         } else {
           Uzivatel.findOneAndUpdate(
             { jmeno: req.userData.jmeno },
@@ -145,7 +142,7 @@ router.post("/notificationAnswer", checkAuth, (req, res, next) => {
           });
         }
       }
-      return res.status(200).json({
+      res.status(200).json({
         message: "Notification doesnt exist",
         notfiId: req.body.notif._id,
         notifications: user,
