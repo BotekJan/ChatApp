@@ -109,11 +109,11 @@ router.post("/notificationAnswer", checkAuth, (req, res, next) => {
 
           Uzivatel.updateOne(
             { jmeno: req.userData.jmeno },
-            { $push: { pratele: {chat_id: result._id} } }
+            { $push: { pratele: {chat_id: chat._id} } }
           );
           Uzivatel.updateOne(
             { jmeno: req.body.notif.from },
-            { $push: { pratele: {chat_id:  result._id} } }
+            { $push: { pratele: {chat_id:  chat._id} } }
           );
 
           //remove notification from current user I hope
