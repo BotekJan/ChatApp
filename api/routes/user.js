@@ -124,12 +124,12 @@ router.post("/notificationAnswer", checkAuth, (req, res, next) => {
                 },
               }
             );
-            res.status(200).json({
+            return res.status(200).json({
               message: "return from inside then",
             })
           }).catch((err) => {
             console.log(err);
-            return res.status(500).json({ error: err });
+            res.status(500).json({ error: err });
           });
         } else {
           Uzivatel.findOneAndUpdate(
