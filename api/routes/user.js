@@ -127,6 +127,7 @@ router.post("/notificationAnswer", checkAuth, (req, res, next) => {
           );
           res.status(200).json({
             message: "friend added",
+            chat: chat
           })
         } else {
           Uzivatel.findOneAndUpdate(
