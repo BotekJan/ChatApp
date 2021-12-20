@@ -101,7 +101,7 @@ router.post("/notificationAnswer", checkAuth, (req, res, next) => {
           let chat = new Chat({
             _id: new mongoose.Types.ObjectId(),
             uzivatele: [req.userData.jmeno, req.body.notif.from],
-            jmeno: req.userData.jmeno + ", " + req.body.notif.jmeno,
+            jmeno: req.userData.jmeno + ", " + req.body.notif.from,
             obrazek: "",
           });
 
@@ -111,7 +111,7 @@ router.post("/notificationAnswer", checkAuth, (req, res, next) => {
               { $push: { pratele: {chat_id: chat._id} } }
             );
             Uzivatel.updateOne(
-              { jmeno: req.body.notif.jmeno },
+              { jmeno: req.body.notif.from },
               { $push: { pratele: {chat_id: chat._id} } }
             );
 
