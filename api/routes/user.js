@@ -124,16 +124,12 @@ router.post("/notificationAnswer", checkAuth, (req, res, next) => {
                 },
               }
             );
-            return res.status(200).json({
+            res.status(200).json({
               message: "return from inside then",
             })
           }).catch((err) => {
             console.log(err);
             res.status(500).json({ error: err });
-          });
-
-          return res.status(200).json({
-            message: "new chat has been created",
           });
         } else {
           Uzivatel.findOneAndUpdate(
