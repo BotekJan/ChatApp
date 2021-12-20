@@ -7,7 +7,7 @@
 <div class="btn-group" role="group" aria-label="Chats">
       <modal [buttonText]="'Add Friend'"></modal>
       <modal [buttonText]="'New Group Chat'" [createGroup]="true"></modal>
-      <a routerLink="{{this.chatsPage ? '../Notifications' :'../Home'}}" type="button" class="btn" [ngClass]="this.chatsPage? 'btn-primary' : 'btn-secondary'" >Notifications</a>
+      <button routerLink="{{this.chatsPage ? '../Notifications' :'../Home'}}" type="button" class="btn" [ngClass]="this.chatsPage? 'btn-primary' : 'btn-secondary'" >Notifications</button>
       
 </div>
 
