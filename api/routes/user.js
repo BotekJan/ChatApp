@@ -109,7 +109,7 @@ router.post("/notificationAnswer", checkAuth, (req, res, next) => {
 
           Uzivatel.updateOne(
             { jmeno: req.userData.jmeno },
-            { $push: { pratele: {chat_id: chat._id} } }
+            { $push: { pratele: {chat_id: 1} } }
           );
           Uzivatel.updateOne(
             { jmeno: req.body.notif.from },
