@@ -125,7 +125,7 @@ router.post("/notificationAnswer", checkAuth, (req, res, next) => {
               },
             }
           );
-          return res.status(200).json({
+          res.status(200).json({
             message: "friend added",
           })
         } else {
@@ -137,12 +137,12 @@ router.post("/notificationAnswer", checkAuth, (req, res, next) => {
               },
             }
           );
-          return res.status(200).json({
+          res.status(200).json({
             message: "friend request has been declined",
           });
         }
       }
-      res.status(200).json({
+      return res.status(200).json({
         message: "Notification doesnt exist",
         notfiId: req.body.notif._id,
         notifications: user,
