@@ -132,7 +132,7 @@ router.post("/notificationAnswer", checkAuth, (req, res, next) => {
             );
           })
           .then(() => {
-            res.status(200).json({
+            return res.status(200).json({
               message: "new chat has been created",
             });
           })
