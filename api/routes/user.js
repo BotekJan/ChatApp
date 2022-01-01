@@ -101,7 +101,7 @@ router.post("/notificationAnswer", checkAuth, (req, res, next) => {
           let chat = new Chat({
             _id: new mongoose.Types.ObjectId(),
             uzivatele: [req.userData.jmeno, req.body.notif.from],
-            jmeno: req.userData.jmeno + ", " + req.body.notif.jmeno,
+            jmeno: req.userData.jmeno + ", " + req.body.notif.from,
             obrazek: "",
           });
 
@@ -117,10 +117,11 @@ router.post("/notificationAnswer", checkAuth, (req, res, next) => {
               { $push: { pratele: {chat_id: chat._id} } }
             );
 
-            //remove notification from current user I hope
+            
             
           })
           .then(() => {
+            //remove notification from current user I hope
             Uzivatel.updateOne(
               { jmeno: req.userData.jmeno },
               {
@@ -148,7 +149,7 @@ router.post("/notificationAnswer", checkAuth, (req, res, next) => {
               },
             }
           );
-          return res.status(200).json({
+          res.status(200).json({
             message: "friend request has been declined",
           });
         }
