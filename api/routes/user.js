@@ -111,46 +111,47 @@ router.post("/notificationAnswer", checkAuth, (req, res, next) => {
               Uzivatel.updateOne(
                 { jmeno: req.userData.jmeno },
                 { $push: { pratele: { chat_id: chat._id } } }
-              );
-            })
-            .then(() => {
-              Uzivatel.updateOne(
-                { jmeno: req.body.notif.jmeno },
-                { $push: { pratele: { chat_id: chat._id } } }
-              );
-            })
-            .then(() => {
-              //remove notification from current user I hope
-              Uzivatel.updateOne(
-                { jmeno: req.userData.jmeno },
-                {
-                  $pull: {
-                    notification: { _id: req.body.notif._id },
-                  },
-                }
-              );
-            })
-            .then(() => {
-              return res.status(200).json({
-                message: "new chat has been created",
-              });
+              )
+              .then(() => {
+                Uzivatel.updateOne(
+                  { jmeno: req.body.notif.jmeno },
+                  { $push: { pratele: { chat_id: chat._id } } }
+                )
+                .then(() => {
+                  //remove notification from current user I hope
+                  Uzivatel.findOneAndUpdate(
+                    { jmeno: req.userData.jmeno },
+                    {
+                      $pull: {
+                        notification: {_id: mongoose.Types.ObjectId(req.body.notif._id)},
+                      },
+                    }
+                  )
+                  .then(() => {
+                    return res.status(200).json({
+                      message: "new chat has been created",
+                    });
+                  })
+                })
+              })
             })
             .catch((err) => {
               console.log(err);
               res.status(500).json({ error: err });
             });
         } else {
-          Uzivatel.findOneAndUpdate(
+          Uzivatel.updateOne(
             { jmeno: req.userData.jmeno },
             {
               $pull: {
-                notification: req.body.notif,
+                notification: {_id: mongoose.Types.ObjectId(req.body.notif._id)},
               },
             }
           )
-            .then(() => {
+            .then((resp) => {
               return res.status(200).json({
                 message: "friend request has been declined",
+                resp: resp
               });
             })
             .catch((err) => {
