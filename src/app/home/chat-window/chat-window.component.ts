@@ -12,13 +12,17 @@ export class ChatWindowComponent implements OnInit {
 
   messages:any = []
 
-  constructor(private chatService: ChatService) { }
+  constructor(private chatService: ChatService) {
+    this.loadMessages()
+   }
 
   ngOnInit(): void {
   }
 
   loadMessages(){
-    //this.chatService.getMessages(this.chat);
+    this.chatService.getMessages(this.chat).subscribe(res => {this.messages = res
+      console.log(this.messages)
+    });
   }
 
 }
