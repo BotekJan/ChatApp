@@ -16,7 +16,7 @@ export class ChatService {
   }
 
   getMessages(chat:any){
-    return this.http.post(this._url + '/messages', {chatId: chat})
+    return this.http.post(this._url + '/messages', {chatId: chat}).pipe(pluck('messages'))
   }
 
   sendMessage(chat: any, message: string){
