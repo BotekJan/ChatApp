@@ -8,4 +8,4 @@ const zpravaSchema = mongoose.Schema({
     casOdeslani: Date
 })
 
-module.exports = mongoose.model('zprava', zpravaSchema)
+module.exports = mongoose.model('Zprava', zpravaSchema)
