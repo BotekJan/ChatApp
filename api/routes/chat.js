@@ -38,7 +38,7 @@ router.post("/messages", checkAuth, (req, res, next) => {
 router.post("/sendMessage", checkAuth, (req, res, next) => {
   let zprava = new Zprava({
     _id: new mongoose.Types.ObjectId(),
-    chatId: req.body.chatId,
+    chatId: new mongoose.Types.ObjectId(req.body.chatId),
     uzivatelId: new mongoose.Types.ObjectId(req.userData.userId),
     obsah: req.body.message,
     casOdeslani: Date()
