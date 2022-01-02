@@ -6,5 +6,5 @@
         <li *ngFor="let message of messages; index as i" [ngClass]="message.uzivatelId === this.user._id ? 'my-message' : 'message'" ><p>{{message.obsah}}</p></li>
         
     </ul>
-    <message-input></message-input>
+    <message-input [chat]="this.chat"></message-input>
 </div>
