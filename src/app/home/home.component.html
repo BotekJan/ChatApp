@@ -6,8 +6,9 @@
           <notification-list *ngIf="!chatsPage"></notification-list>
       </div> 
       <div class="col-xl-8">
-        <!-- <chat-window *ngIf="chatsPage" [chat]="this.currentChat" [user]="'abc'"></chat-window> -->
+        <chat-window *ngIf="chatsPage && this.currentChat != null" [chat]="this.currentChat" [user]="'abc'"></chat-window>
         <notifications *ngIf="!chatsPage"></notifications>
+        
       </div>
     </div>
   </div>

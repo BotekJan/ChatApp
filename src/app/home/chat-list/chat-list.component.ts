@@ -10,17 +10,22 @@ export class ChatListComponent implements OnInit {
   @Output() pickedChat = new EventEmitter<boolean>();
 
   chats:any = [];
-  constructor(private chatService: ChatService) { }
+  picked:any;
+  constructor(private chatService: ChatService) { 
+    this.getChats()
+  }
 
   ngOnInit(): void {
   }
 
   pick(index:number){
     this.pickedChat.emit(this.chats[index])
+    this.picked = index;
   }
 
   getChats(){
-    this.chats = this.chatService.getChats()
+    this.chatService.getChats().subscribe(res => {this.chats = res
+    });
   }
 }
 
