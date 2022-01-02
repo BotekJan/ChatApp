@@ -1,3 +1,4 @@
+import { ChatService } from './../chat.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
@@ -9,13 +10,17 @@ export class ChatListComponent implements OnInit {
   @Output() pickedChat = new EventEmitter<boolean>();
 
   chats:any = [];
-  constructor() { }
+  constructor(private chatService: ChatService) { }
 
   ngOnInit(): void {
   }
 
   pick(index:number){
     this.pickedChat.emit(this.chats[index])
+  }
+
+  getChats(){
+    this.chats = this.chatService.getChats()
   }
 }
 

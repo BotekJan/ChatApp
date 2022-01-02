@@ -1,14 +1,25 @@
 <div id="userPanel">
-<h1>{{this.getUsername()}}</h1>
-<div id="profileButtons">
-  <a class="btn btn-primary btn-sm" href="#" role="button">Edit profile</a>
-  <button class="btn btn-primary btn-sm" type="button" (click)="this.logoutUser()">Logout</button>
-</div>
-<div class="btn-group" role="group" aria-label="Chats">
-      <modal [buttonText]="'Add Friend'"></modal>
-      <modal [buttonText]="'New Group Chat'" [createGroup]="true"></modal>
-      <a routerLink="{{this.chatsPage ? '../Notifications' :'../Home'}}" type="button" class="btn" [ngClass]="this.chatsPage? 'btn-primary' : 'btn-secondary'" >Notifications</a>
-      
+  <h1>{{ this.getUsername() }}</h1>
+  <div id="profileButtons">
+    <a class="btn btn-primary btn-sm" href="#" role="button">Edit profile</a>
+    <button
+      class="btn btn-primary btn-sm"
+      type="button"
+      (click)="this.logoutUser()"
+    >
+      Logout
+    </button>
+  </div>
+  <div class="btn-group" role="group" aria-label="Chats">
+    <modal [buttonText]="'Add Friend'"></modal>
+    <modal [buttonText]="'New Group Chat'" [createGroup]="true"></modal>
+    <button
+      routerLink="{{ this.chatsPage ? '../Notifications' : '../Home' }}"
+      type="button"
+      class="btn"
+      [ngClass]="this.chatsPage ? 'btn-primary' : 'btn-secondary'"
+      >Notifications</button
+    >
+  </div>
 </div>
 
-</div>

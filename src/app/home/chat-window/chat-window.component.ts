@@ -18,7 +18,7 @@ export class ChatWindowComponent implements OnInit {
   }
 
   loadMessages(){
-    this.chatService.getMessages(this.chat);
+    //this.chatService.getMessages(this.chat);
   }
 
 }
