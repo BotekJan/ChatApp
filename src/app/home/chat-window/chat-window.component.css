@@ -13,16 +13,15 @@
 }
 
 .message{
-    color:blue;
+    color:lightgray;
     width: 100%;
     margin-left: 2vh;
     margin-right: 2vh;
 }
 
 .my-message {
-    color:grey;
-    float: right;
-    margin-left: 2vh;
+    color:lightskyblue;
+    margin-left: 80%;
     margin-right: 2vh;
     width: 100%;
 }
