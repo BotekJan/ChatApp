@@ -3,7 +3,7 @@
       <h1 class="nav-link active">{{this.chat.jmeno}}</h1>
     </nav>
     <ul id="messages">
-        <li *ngFor="let message of messages; index as i" [ngClass]="message.my ? 'my-message' : 'message'"><p >{{message.obsah}}</p></li>
+        <li *ngFor="let message of messages; index as i" [ngClass]="message.uzivatelId === this.user._id ? 'my-message' : 'message'"><p >{{message.obsah}} {{this.user._id}}</p></li>
         
     </ul>
     <message-input></message-input>
