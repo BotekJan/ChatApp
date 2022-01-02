@@ -34,7 +34,7 @@ router.get("/messages", checkAuth, (req, res, next) => {
     });
 });
 
-router.get("/sendMessage", checkAuth, (req, res, next) => {
+router.post("/sendMessage", checkAuth, (req, res, next) => {
   let zprava = new Zprava({
     _id: new mongoose.Types.ObjectId(),
     chatId: req.body.chatId,
