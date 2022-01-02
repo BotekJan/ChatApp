@@ -22,7 +22,7 @@ router.get("/", checkAuth, (req, res, next) => {
 router.post("/messages", checkAuth, (req, res, next) => {
   Zprava.find({ chatId: req.body.chatId })
     .sort({
-      casOdeslani: -1,
+      casOdeslani: 1,
     })
     .then((response) => {
       return res.status(200).json({
