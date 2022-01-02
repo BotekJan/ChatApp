@@ -105,41 +105,40 @@ router.post("/notificationAnswer", checkAuth, (req, res, next) => {
             obrazek: "",
           });
 
-          chat.save().then(() => {
-            Uzivatel.updateOne(
-              { jmeno: req.userData.jmeno },
-              { $push: { pratele: {chat_id: chat._id} } }
-            );
-          })
-          .then(() => {
-            Uzivatel.updateOne(
-              { jmeno: req.body.notif.jmeno },
-              { $push: { pratele: {chat_id: chat._id} } }
-            );
-
-            
-            
-          })
-          .then(() => {
-            //remove notification from current user I hope
-            Uzivatel.updateOne(
-              { jmeno: req.userData.jmeno },
-              {
-                $pull: {
-                  notification: {_id: req.body.notif._id},
-                },
-              }
-            );
-          })
-          .then(() => {
-            return res.status(200).json({
-              message: "new chat has been created",
+          chat
+            .save()
+            .then(() => {
+              Uzivatel.updateOne(
+                { jmeno: req.userData.jmeno },
+                { $push: { pratele: { chat_id: chat._id } } }
+              );
+            })
+            .then(() => {
+              Uzivatel.updateOne(
+                { jmeno: req.body.notif.jmeno },
+                { $push: { pratele: { chat_id: chat._id } } }
+              );
+            })
+            .then(() => {
+              //remove notification from current user I hope
+              Uzivatel.updateOne(
+                { jmeno: req.userData.jmeno },
+                {
+                  $pull: {
+                    notification: { _id: req.body.notif._id },
+                  },
+                }
+              );
+            })
+            .then(() => {
+              return res.status(200).json({
+                message: "new chat has been created",
+              });
+            })
+            .catch((err) => {
+              console.log(err);
+              res.status(500).json({ error: err });
             });
-          })
-          .catch((err) => {
-            console.log(err);
-            res.status(500).json({ error: err });
-          });
         } else {
           Uzivatel.findOneAndUpdate(
             { jmeno: req.userData.jmeno },
@@ -148,70 +147,28 @@ router.post("/notificationAnswer", checkAuth, (req, res, next) => {
                 notification: req.body.notif,
               },
             }
-          );
-          res.status(200).json({
-            message: "friend request has been declined",
-          });
+          )
+            .then(() => {
+              return res.status(200).json({
+                message: "friend request has been declined",
+              });
+            })
+            .catch((err) => {
+              console.log(err);
+              return res.status(500).json({ error: err });
+            });
         }
+      } else {
+        return res.status(200).json({
+          message: "Notification doesnt exist",
+          notfiId: req.body.notif._id,
+          notifications: user,
+        });
       }
-      return res.status(200).json({
-        message: "Notification doesnt exist",
-        notfiId: req.body.notif._id,
-        notifications: user,
-      });
     })
     .catch((err) => {
-      console.log(err);
-      res.status(500).json({ error: err });
+      return res.status(500).json({ error: err });
     });
 });
-
-// router.post("/updateTest", (req, res, next) => {
-//   Uzivatel.updateOne(
-//     { jmeno: req.body.jmeno },
-//     {
-//       $push: {
-//         notification: {_id: req.body.id},
-//       },
-//     }
-//   ).
-//   then(resp => {
-//     Uzivatel.updateOne(
-//       { jmeno: req.body.jmeno },
-//       {
-//         $push: {
-//           notification: {_id: req.body.id + " another"},
-//         },
-//       }
-//     ).then(resp =>{
-//       res.status(200).json({
-//         response: resp
-//       })
-//     })
-    
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//     res.status(500).json({ error: err });
-//   });   
-// });
-
-// router.get("/updateTestAnswer", (req, res, next) => {
-//   Uzivatel.findOne({ jmeno: req.body.jmeno })
-//     .then((user) => {
-//       if (user) {
-//         return res.status(200).json({
-//           User: user,
-//         });
-//       }
-//       return res.status(200).json({
-//         message: "User does not exist",
-//       });
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//       res.status(500).json({ error: err });
-//     });
-// });
 
 module.exports = router;
