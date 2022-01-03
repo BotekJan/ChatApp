@@ -23,14 +23,13 @@ export class ChatWindowComponent implements OnInit {
   }
 
   loadMessages(){
-    this.chatService.getMessages(this.chat).subscribe(res => {this.messages = res});
+    this.chatService.getMessages(this.chat).subscribe(res => {this.messages = res
+    console.log(res)
+    });
   }
 
   loadUser(){
-    this.userService.getUser().subscribe(res => {
-      this.user = res
-      console.log(this.user)
-    })
+    this.userService.getUser().subscribe(res => {this.user = res})
   }
 
 }
