@@ -1,7 +1,7 @@
-<div style="margin-top: 3vh;">
-    <ul style=" list-style-type: none;">
-        <li *ngFor="let chat of chats ; index as i">
-            <button type="button" class="btn btn-block btn-primary" (click)="pick(i)">{{chat.name}}</button>
+<div id="chatList">
+    <ul style=" list-style-type: none; width: 100%;">
+        <li *ngFor="let chat of chats ; index as i" style="width: 100%;">
+            <button  type="button" class="btn btn-block btn-lg" [ngClass]="i === this.picked ? 'btn-secondary' : 'btn-primary'" (click)="pick(i)">{{chat.jmeno}}</button>
             
         </li>
     </ul>

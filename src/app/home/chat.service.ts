@@ -12,11 +12,11 @@ export class ChatService {
   constructor(private http: HttpClient) {}
 
   getChats() {
-    return this.http.get(this._url);
+    return this.http.get(this._url).pipe(pluck('chats'));
   }
 
   getMessages(chat:any){
-    return this.http.post(this._url + '/messages', {chatId: chat})
+    return this.http.post(this._url + '/messages', {chatId: chat}).pipe(pluck('messages'))
   }
 
   sendMessage(chat: any, message: string){

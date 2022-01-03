@@ -10,20 +10,21 @@
     height: 50vh;
     overflow:hidden; 
     overflow-y:scroll;
+    overflow-wrap: break-word;
 }
 
 .message{
-    color:blue;
-    width: 100%;
+    color:lightgray;
+    width: 50%;
     margin-left: 2vh;
     margin-right: 2vh;
 }
 
 .my-message {
-    color:grey;
-    float: right;
-    margin-left: 2vh;
-    margin-right: 2vh;
+    color:lightskyblue;
+    margin-left: auto;
+    margin-right: 4vh;
+    width: 50%;
 }
 
 p, a{

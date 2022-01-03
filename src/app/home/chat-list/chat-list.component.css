@@ -1,0 +1,8 @@
+#chatList{
+    border-radius: 45px;
+    background-color: rgba(0, 0, 0, 0.103);
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    padding: 10px;
+    width: 100%;
+}

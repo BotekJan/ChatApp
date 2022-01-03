@@ -15,7 +15,7 @@ export class UserPanelComponent implements OnInit {
   chatsPage = true;
   private username: any;
   constructor(private userService: UserService, private auth: AuthService, private router: Router) {
-    this.chatsPage = router.url ==="/Home"
+    this.chatsPage = router.url === "/Home"
   }
 
   ngOnInit(): void {

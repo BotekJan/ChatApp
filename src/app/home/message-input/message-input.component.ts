@@ -16,5 +16,6 @@ export class MessageInputComponent implements OnInit {
 
   onSubmit(form: NgForm){
     this.chatService.sendMessage(this.chat._id, form.controls.message.value);
+    form.reset()
   }
 }
