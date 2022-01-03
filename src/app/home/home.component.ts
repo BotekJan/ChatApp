@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   chatsPage = true;
-  currentChat:any = null
+  currentChat = null
 
   constructor(private router : Router) { 
     this.chatsPage = router.url ==="/Home"

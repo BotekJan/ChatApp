@@ -15,17 +15,16 @@ export class ChatWindowComponent implements OnInit {
   user:any
 
   constructor(private chatService: ChatService,private userService: UserService) {
-    this.loadMessages()
-    this.loadUser()
+   
    }
 
   ngOnInit(): void {
+    this.loadMessages()
+    this.loadUser()
   }
 
   loadMessages(){
-    this.chatService.getMessages(this.chat).subscribe(res => {this.messages = res
-    console.log(res)
-    });
+    this.chatService.getMessages(this.chat).subscribe(res => {this.messages = res});
   }
 
   loadUser(){
